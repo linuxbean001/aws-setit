@@ -1,0 +1,119 @@
+
+.table-section {
+    border: 2px solid #895fdc;
+    padding: 10px;
+    min-height: 320px;
+    background: #8ed3da3b;
+}
+.table-section h5{ color:#895fdc; }
+.form-table {
+    margin-top: 15px;
+}
+.mock-tools {
+    padding-top: 50px;
+}
+.form-table tr{ color: #895fdc; font-weight: 500; }
+.form-table td:first-child {
+    text-align: right;
+
+}
+.form-table td {
+    font-size: 12px;
+    padding: 8px 0px;
+    text-align: justify;
+    padding-left: 10px;
+    border: 0;
+}
+.form-table td input {
+    max-width: 100px;
+    margin-right: 3px;
+}
+h5.page-title {
+    text-align: center;
+    font-weight: 600;
+    font-style: italic;
+    background: #4d4d92e8;
+    margin-bottom: 15px;
+    padding: 5px;
+    color: #fff;
+}
+input.input_f {
+    width: 80px;
+    border: none;
+    padding: 3px 5px;
+}
+input.input_sec {
+    width: 50px;
+    border: none;
+    padding: 3px 5px;
+}
+.mockup-button{
+    margin-top: 20px;
+}
+
+.error_sell {
+    border: 1px solid #c72828 !important;
+}
+
+
+.mockup-report-section {
+    margin-top: 50px;
+}
+.report-table-section h5 {
+    background: #4d4d92e8;
+    font-size: 14px;
+    color: #fff;
+    padding: 5px;
+}
+table.table.report-form-table {
+    background: #8ed3da3b;
+    border: 2px solid #fff;
+}
+table.table.report-form-table td {
+    border: 2px solid #FFF;
+}
+table.table.report-form-table td {
+    border: 2px solid #FFF;
+    padding: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #bf2323;
+}
+.tbl-head{  color: #3a3abfe8 !important; }
+table.table.report-form-table td:first-child{
+    text-align: right;
+    padding-right: 15px;
+    color: #3a3abfe8;
+
+}
+h5.report-page-title {
+    color: #a79797;
+    font-size: 30px;
+    padding: 30px;
+}
+
+/* .graph-section {
+    float: left !important;
+} */
+
+.graph-section {
+    background: #ccc;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    padding: 0px;
+    margin-bottom: 40px;
+}
+
+.initial_required_yield{
+ font-weight: 400;
+    font-size: 13px;
+    color: #895fdc;
+    margin-bottom:25px;
+}
+.initial_required_yield span{
+    font-weight: 600;
+   }
+
+   .mobile-canvas canvas.canvasjs-chart-canvas {
+    width: 525px;
+}
