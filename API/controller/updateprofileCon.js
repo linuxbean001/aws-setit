@@ -186,7 +186,7 @@ function _setDataForToken(data) {
 
 exports.useremailsendresetlinkTODb = async (req, res, next) => {
 
-    console.log('priyansh shruti', req.body.useremail);
+    console.log('xx data is useremail', req.body.useremail);
 
     try {
         let userdata = await updateProfile.findOne({ email: req.body.useremail });
