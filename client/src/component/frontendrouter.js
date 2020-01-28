@@ -122,7 +122,7 @@ class Frontendrouters extends Component{
                                      return <UserManualPdf onHeaderHover={this.handlerLoginHover.bind(this)} />
                                  }}  />
 
-                                <Route exact path="/front/resetpassword" render={() => {
+                                <Route exact path="/front/resetpassword/:token" render={() => {
                                      return <ResetPassword onHeaderHover={this.handlerLoginHover.bind(this)} />
                                  }}  />
 
@@ -142,7 +142,7 @@ class Frontendrouters extends Component{
                                     return <GetStarted onHeaderHover={this.handlerLoginHover.bind(this)} />
                                 }} />
 
-                                <Route exact path="/front/passwordreset" render={() => {
+                                <Route exact path="/front/sendresetlink" render={() => {
                                     return <PasswordReset onHeaderHover={this.handlerLoginHover.bind(this)} />
                                 }} />
 

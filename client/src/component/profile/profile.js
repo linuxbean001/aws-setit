@@ -477,6 +477,12 @@ class Profile extends Component {
                 Errorindicator.push(5);
             }
         }
+        if (this.state.homeBox) {
+            if (!this.state.iWeRent) {
+                formIsValid = true;
+                errors.CiWeRent = "form-control";
+            }
+        }
 
         if (this.state.homeValue || this.state.Mortgage) {
             if (!this.state.homeBox) {
@@ -519,36 +525,55 @@ class Profile extends Component {
         //     }
         // }
 
-        if (!this.state.homeBrokerage) {
-            if (this.state.brokerage) {
+        if (this.state.homeBrokerage) {
+            if (!this.state.brokerage) {
                 formIsValid = true;
-                errors.Ebrokerage = "error_sell form-control";
+                errors.Ebrokerage = "checkfalse";
                 Errorindicator.push(5);
             }
         }
 
 
         if (this.state.monthlyRent) {
-            if (!this.state.homeBanking) {
+            if (!this.state.homeBanking && !this.state.homeBrokerage) {
                 formIsValid = true;
                 errors.EhomeBanking = "checkfalse";
+                errors.EhomeBrokerage = "checkfalse";
                 Errorindicator.push(5);
             }
         }
-
-        if (!this.state.homeBox && !this.state.iWeRent) {
+        if (!this.state.iWeRent) {
             formIsValid = true;
-            errors.EhomeBox = "checkfalse";
             errors.EiWeRent = "checkfalse";
             Errorindicator.push(5);
         } else {
             formIsValid = true;
             errors.EhomeBox = "checktrue";
-            errors.EiWeRent = "checktrue";
-        }
-      
 
-        if (!this.state.homeBrokerage &&  !this.state.homeBanking && !this.state.homeOther && !this.state.homeRetirementAccount && !this.state.homeRothAccount) {
+        }
+
+        if (!this.state.homeBox) {
+            formIsValid = true;
+            errors.EhomeBox = "checkfalse";
+            Errorindicator.push(5);
+        } else {
+            formIsValid = true;
+            errors.EhomeBox = "checktrue";
+        }
+
+        // if (!this.state.homeBox && !this.state.iWeRent) {
+        //     formIsValid = true;
+        //     errors.EhomeBox = "checkfalse";
+        //     errors.EiWeRent = "checkfalse";
+        //     Errorindicator.push(5);
+        // } else {
+        //     formIsValid = true;
+        //     errors.EhomeBox = "checktrue";
+        //     errors.EiWeRent = "checktrue";
+        // }
+
+
+        if (!this.state.homeBrokerage && !this.state.homeBanking && !this.state.homeOther && !this.state.homeRetirementAccount && !this.state.homeRothAccount) {
             formIsValid = true;
             errors.EhomeBrokerage = "checkfalse";
             errors.EhomeBanking = "checkfalse";
@@ -581,6 +606,7 @@ class Profile extends Component {
                 Errorindicator.push(5);
             }
         }
+
         if (this.state.retirementAccount) {
             if (!this.state.homeRetirementAccount) {
                 formIsValid = true;
@@ -808,7 +834,7 @@ class Profile extends Component {
         }
         if (!this.state.expectations) {
             formIsValid = true;
-            errors.Eexpectations = "error_sell form-control"; 
+            errors.Eexpectations = "error_sell form-control";
             Errorindicator.push(8);
         }
         // if(!this.state.experience_gb){
@@ -965,19 +991,19 @@ class Profile extends Component {
             }
         }
 
-        // if (this.state.banking) {
-        //     if (!this.state.homeBanking) {
-        //         formIsValid = true;
-        //         errors.EhomeBanking = "checkfalse";
-        //         Errorindicator.push(5);
-        //     }
-        // }
-
-        if(this.state.banking){
-            if(!this.state.homeBanking){
+        if (this.state.banking) {
+            if (!this.state.homeBanking) {
                 formIsValid = true;
                 errors.EhomeBanking = "checkfalse";
-                // Errorindicator.push(5)
+                Errorindicator.push(5);
+            }
+        }
+
+        if (this.state.homeBanking) {
+            if (!this.state.banking) {
+                formIsValid = true;
+                errors.Ebanking = "checkfalse";
+                Errorindicator.push(5)
             }
         }
 
@@ -1651,7 +1677,7 @@ class Profile extends Component {
                 }
             } else {
                 console.log('clickvaluehere');
-                this.setState({ [name]: value, EiWeRent: 'checkfalse', EhomeBox: 'checktrue' }) //here checktrue
+                this.setState({ [name]: value, EiWeRent: 'checktrue', EhomeBox: 'checktrue' }) //here checktrue
             }
         }
 
@@ -1686,7 +1712,7 @@ class Profile extends Component {
                 let t = '';
                 if (value) { t = ''; }
                 this.setState({ [name]: t, Ebanking: "form-control" })
-                if (!this.state.ChomeBanking && !this.state.ChomeBrokerage && !this.state.ChomeRetirementAccount && !this.state.ChomeRothAccount && !this.state.ChomeOther) {
+                if (this.state.ChomeBanking && !this.state.ChomeBrokerage && !this.state.ChomeRetirementAccount && !this.state.ChomeRothAccount && !this.state.ChomeOther) {
                     this.setState({
                         EhomeBanking: 'checkfalse',
                         EhomeBrokerage: 'checkfalse',
@@ -1700,7 +1726,7 @@ class Profile extends Component {
                 this.setState({ [name]: value, })
                 this.setState({
                     EhomeBanking: 'checktrue',
-                    EhomeBrokerage: 'checkfalse',
+                    EhomeBrokerage: 'checktrue',
                     EhomeRetirementAccount: 'checktrue',
                     EhomeRothAccount: 'checktrue',
                     EhomeOther: 'checktrue',
@@ -4079,7 +4105,7 @@ class Step5 extends React.Component {
                                             </td>
                                             <td>
                                                 <div className="form-group">
-                                                    <label htmlFor="name" className="profile-value" style={{ fontWeight: 700, fontSize: "18px", lineHeight: 27  +'px!important' }}>Mortgage</label>
+                                                    <label htmlFor="name" className="profile-value" style={{ fontWeight: 700, fontSize: "18px", lineHeight: 27 + 'px!important' }}>Mortgage</label>
                                                     <NumberFormat
                                                         className={this.props.EMortgage ? this.props.EMortgage : 'form-control'}
                                                         id="Mortgage"
@@ -4151,7 +4177,7 @@ class Step5 extends React.Component {
                             <table class="assestTable">
                                 <tr>
                                     <td> </td>
-                                    <td style={{fontWeight: "bold", fontSize: "18px"}}> Estimated value in accounts </td>
+                                    <td style={{ fontWeight: "bold", fontSize: "18px" }}> Estimated value in accounts </td>
                                 </tr>
 
                                 <tr>
@@ -4290,7 +4316,7 @@ class Step5 extends React.Component {
                                 </tr>
 
                                 <tr>
-                                    <td style={{fontWeight: "bold",paddingLeft: "31px"}}>Approx. asset total</td>
+                                    <td style={{ fontWeight: "bold", paddingLeft: "31px" }}>Approx. asset total</td>
                                     <td>
                                         <input
 
@@ -4318,7 +4344,7 @@ class Step5 extends React.Component {
                                     <table class="assestTable">
                                         <tr>
                                             <td> </td>
-                                            <td style={{fontWeight: "bold", fontSize: "18px"}}>Total annual income</td>
+                                            <td style={{ fontWeight: "bold", fontSize: "18px" }}>Total annual income</td>
                                         </tr>
 
                                         <tr>
@@ -4384,7 +4410,7 @@ class Step5 extends React.Component {
                     <div className="row">
                         <div className="col-md-12  col-sm-12">
                             <div className="form-group">
-                                <label htmlFor="name" style={{fontWeight: "bold"}}>Other</label>
+                                <label htmlFor="name" style={{ fontWeight: "bold" }}>Other</label>
                                 <textarea
                                     className={this.props.Eothers ? this.props.Eothers : 'form-control'}
                                     id="others"
@@ -4832,7 +4858,7 @@ class Step8 extends React.Component {
 
                     <div className="col-md-8 col-sm-12">
                         <div className="form-group">
-                            <label htmlFor="name" style={{ fontWeight: 500, fontSize: "18px", color: "black"}}>Current allocation to stocks and other risky assets</label>
+                            <label htmlFor="name" style={{ fontWeight: 500, fontSize: "18px", color: "black" }}>Current allocation to stocks and other risky assets</label>
                             <select value={this.props.currentAllocationStock} id="currentAllocationStock" name="currentAllocationStock" onChange={this.props.handleChange} className={this.props.EcurrentAllocationStock ? this.props.EcurrentAllocationStock : 'form-control'} >
                                 <option value=""> Select</option>
                                 <option value="0% - ultra conservative"> 0% - ultra conservative</option>

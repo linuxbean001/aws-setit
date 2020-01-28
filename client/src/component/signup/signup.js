@@ -650,7 +650,7 @@ render(){
                                                     </div>
                                                    
                                                     <button type="button" onClick={this.LoginMe} className="btn">GO</button>
-                                                  <div style={{marginTop: "14px"}}><Link to="/front/passwordreset"><label className="label-link data" for="page1">Forgot Password or login</label></Link></div>
+                                                  <div style={{marginTop: "14px"}}><Link to="/front/sendresetlink"><label className="label-link mydata" for="page1">Forgot password or login?</label></Link></div>
                                                 </form>
                                             </div>
                                         </div>

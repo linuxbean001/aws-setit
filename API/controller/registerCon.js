@@ -22,7 +22,7 @@ exports.addRegisterTODb = async (req, res, next) => {
         last_uses_date:new Date()    
     });    
     try {
-            let user = await Register.findOne({ email: req.body.email});
+            let user = await Register.findOne({ email: req.body.email});  
             console.log('user:', user);
             if(user){
 

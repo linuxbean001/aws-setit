@@ -23,6 +23,7 @@ router.post('/updateProfile', profileUpdateCon.updateProfileTODb);
 router.post('/resetpassword', profileUpdateCon.resetpasswordTODb);
 router.post('/emailresetpassword', profileUpdateCon.emailresetpasswordTODb);
 router.post('/useremailresetpassword', profileUpdateCon.useremailresetpasswordTODb);
+router.post('/useremailsendresetlink',profileUpdateCon.useremailsendresetlinkTODb);
 router.post('/passwordlinkstatus', profileUpdateCon.passwordlinkstatusTODb);
 router.post('/emailstatus', profileUpdateCon.emailstatusTODb);
 

@@ -4720,8 +4720,19 @@ p a span:hover sub {
   color: purple !important;
 }
 
-
-
+.label-link.mydata{
+  color: #17c6fd;
+  font-style: initial;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+hr.hrtag {
+  border: 2px solid;
+  color: gray;
+  margin-left: 2px;
+  width: 75%;
+}
 
 
 .initial_required_yield_note {
