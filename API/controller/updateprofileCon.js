@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
 const creds = require('./config');
+const pdf = require('html-pdf')
+var path = require('path')
 sgMail.setApiKey(creds.SENDGRID_API_KEY);
 var pdfcrowd = require("pdfcrowd");
 // create the API client instance
@@ -199,7 +201,7 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
                     from: '"SET IT AND LEAVE IT" <' + creds.USER + '>', // sender address
                     to: req.body.useremail, //creds.USER, // list of receivers
                     subject: 'Reset your password.', // Subject line
-                    html: 'We have received a request to change the password for your account. If you initiated this request,then please click '+'http://localhost:3300/front/resetpassword/' + token +'on this link to reset your password. If this was NOT you, please let us know.'// html body
+                    html: 'We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://localhost:3300/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.'// html body
                 };
                 sgMail.send(UpdateProfilemsg);
 
@@ -237,7 +239,7 @@ exports.useremailresetpasswordTODb = async (req, res, next) => {
 
     try {
         let userdata = await updateProfile.findOne({ email: decoded.email });
-       
+
         if (userdata) {
 
             const result = await updateProfile.findByIdAndUpdate({ _id: userdata._id, }, {
@@ -542,7 +544,7 @@ exports.userQuestionTODb = async (req, res, next) => {
                         otherGoalService: req.body.otherGoalService,
                         goalComment: req.body.goalComment,
                         goalQuestion: req.body.goalQuestion,
-                        datetime:req.body.datetime
+                        datetime: req.body.datetime
                     })
 
                     result = await userQusetionVo.save(
@@ -777,8 +779,8 @@ exports.getuserQuestionTODb = (req, res, next) => {
 
 
 exports.getAllQuestionnaireTODb = (req, res, next) => {
-    console.log('fffffffffff');
-    
+   
+
     userQusetion.find({}).then(result => {
         if (result) {
             console.log('resultvivek:', result)
@@ -794,19 +796,35 @@ exports.getAllQuestionnaireTODb = (req, res, next) => {
 
 
 exports.convertpdfTODb = (req, res, next) => {
-    //var callbacks = pdfcrowd.saveToFile("./client/public/upload-file/HelloWorld.pdf");   
-    var callbacks = pdfcrowd.saveToFile("./client/build/upload-file/HelloWorld.pdf");
-    res.status(201).json({
-        data: 'Success'
-    });
-    callbacks.error = function (errMessage, statusCode) {
-        if (statusCode) {
-            console.error("Pdfcrowd Error: " + statusCode + " - " + errMessage);
-        } else {
-            console.error("Pdfcrowd Error: " + errMessage);
-        }
-    };
-    client.convertString(req.body.pdfContent, callbacks);
+    //var callbacks = pdfcrowd.saveToFile("./client/public/upload-file/HelloWorld.pdf"); 
+
+    // var callbacks = pdfcrowd.saveToFile("./client/build/upload-file/HelloWorld.pdf");
+    // res.status(201).json({
+    //     data: 'Success'
+    // });
+    // callbacks.error = function (errMessage, statusCode) {
+    //     if (statusCode) {
+    //         console.error("Pdfcrowd Error: " + statusCode + " - " + errMessage);
+    //     } else {
+    //         console.error("Pdfcrowd Error: " + errMessage);
+    //     }
+    // };
+    // client.convertString(req.body.pdfContent, callbacks);
+
+
+    
+    pdf
+        .create(req.body.pdfContent, {})
+        .toFile(
+            //path.join(__dirname, `../../client/public/upload-file/HelloWorld.pdf`),
+            path.join(__dirname, `../../client/build/upload-file/HelloWorld.pdf`),
+            err => {
+                res.status(201).json({
+                    message: 'Pdf Download',
+                    success: true
+                })
+            }
+        )
 }
 
 

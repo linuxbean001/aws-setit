@@ -136,12 +136,13 @@ class QuestionnaireList extends Component{
    pdfPrintSubmit=()=>{
 
     let linkElement = process.env.PUBLIC_URL + '/upload-file/HelloWorld.pdf';
+    
+    
     let link = document.createElement('a');
     link.download = 'question.pdf';
     link.href = linkElement;
     link.click();
    // this.setState({ showModalDialog: false, pdfdata: '' });
-     console.log('linkElement:',linkElement);
     const datavalue={
       //'pdfpath':'./client/public/upload-file/HelloWorld.pdf'
       'pdfpath':'./client/build/upload-file/HelloWorld.pdf'

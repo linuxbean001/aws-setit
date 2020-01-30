@@ -477,12 +477,13 @@ class Profile extends Component {
                 Errorindicator.push(5);
             }
         }
-        if (this.state.homeBox) {
-            if (!this.state.iWeRent) {
-                formIsValid = true;
-                errors.CiWeRent = "form-control";
-            }
-        }
+
+        // if (this.state.homeBox) {
+        //     if (!this.state.iWeRent) {
+        //         formIsValid = true;
+        //         errors.CiWeRent = "form-control";
+        //     }
+        // }
 
         if (this.state.homeValue || this.state.Mortgage) {
             if (!this.state.homeBox) {
@@ -532,7 +533,21 @@ class Profile extends Component {
                 Errorindicator.push(5);
             }
         }
-
+        if(this.state.brokerage){
+            if(!this.state.homeBrokerage){
+                formIsValid = true;
+                errors.EhomeBrokerage = "error_sell form-control";
+                Errorindicator.push(5);
+    
+            }
+        }
+     if(!this.state.brokerage){
+         if(this.state.homeBrokerage){
+             formIsValid = true;
+             errors.Ebrokerage = "error_sell form-control"
+             Errorindicator.push(5);
+         }
+     }
 
         if (this.state.monthlyRent) {
             if (!this.state.homeBanking && !this.state.homeBrokerage) {
@@ -543,8 +558,10 @@ class Profile extends Component {
             }
         }
         if (!this.state.iWeRent) {
+            console.log('iWeRent123');
+            
             formIsValid = true;
-            errors.EiWeRent = "checkfalse";
+            errors.EiWeRent = "checktrue";
             Errorindicator.push(5);
         } else {
             formIsValid = true;
@@ -1226,6 +1243,7 @@ class Profile extends Component {
                 this.setState({ brokerage: '', EhomeBrokerage: 'checktrue', Ebrokerage: "error_sell form-control" })
             }
         }
+
         if (name == 'rothAccount') {
             if (value) {
                 if (!this.state.homeRothAccount) {
