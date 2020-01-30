@@ -199,7 +199,7 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
                     from: '"SET IT AND LEAVE IT" <' + creds.USER + '>', // sender address
                     to: req.body.useremail, //creds.USER, // list of receivers
                     subject: 'Reset your password.', // Subject line
-                    html: 'We have received a request to change the password for your account. If you initiated this request,then please click '+'http://localhost:3000/front/resetpassword/' + token +'on this link to reset your password. If this was NOT you, please let us know.'// html body
+                    html: 'We have received a request to change the password for your account. If you initiated this request,then please click '+'http://localhost:3300/front/resetpassword/' + token +'on this link to reset your password. If this was NOT you, please let us know.'// html body
                 };
                 sgMail.send(UpdateProfilemsg);
 
@@ -777,6 +777,8 @@ exports.getuserQuestionTODb = (req, res, next) => {
 
 
 exports.getAllQuestionnaireTODb = (req, res, next) => {
+    console.log('fffffffffff');
+    
     userQusetion.find({}).then(result => {
         if (result) {
             console.log('resultvivek:', result)

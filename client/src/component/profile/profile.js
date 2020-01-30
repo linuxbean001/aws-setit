@@ -634,19 +634,19 @@ class Profile extends Component {
             if (!this.state.otherTypes) {
                 formIsValid = true;
                 errors.EotherTypes = "error_sell form-control";
-                Errorindicator.push();
+                Errorindicator.push(5);
             }
             if (!this.state.otherApproxValue) {
                 formIsValid = true;
-                errors.EotherApproxValue = "error_sell form-control";
-                Errorindicator.push();
+                errors.EotherApproxValue = "error_sell form-control"; 
+                Errorindicator.push(5);
             }
         }
         if (this.state.otherTypes || this.state.otherApproxValue) {
             if (!this.state.homeOther) {
                 formIsValid = true;
                 errors.EhomeOther = "checkfalse";
-                Errorindicator.push();
+                Errorindicator.push(5);
             }
         }
 

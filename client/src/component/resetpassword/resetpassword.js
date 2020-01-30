@@ -9,8 +9,8 @@ class ResetPassword extends Component {
     constructor(props) {
         super(props);
         console.log('xx parms is',
-        this.props.match.params.token);
-        
+            this.props.match.params.token);
+
         //let fields2=API.getProfile().data;
         //console.log('fields2:',fields2)
         const query = new URLSearchParams(this.props.location.search);
@@ -62,39 +62,39 @@ class ResetPassword extends Component {
         //     formIsValid = false;
         //     errors["password"] = "error_sell form-control";
         // }
-        if(!fields["password"]){
+        if (!fields["password"]) {
             formIsValid = false;
             errors["password"] = "error_sell form-control";
-           }
-           if(!fields["cpassword"]){
+        }
+        if (!fields["cpassword"]) {
             formIsValid = false;
             errors["cpassword"] = "error_sell form-control";
-           }
-        
-           if(fields["password"] != fields["cpassword"]){
-                formIsValid = false;
-                errors["cpassword"] = "error_sell form-control";
-                errors["password"] = "error_sell form-control";
-           }
+        }
+
+        if (fields["password"] != fields["cpassword"]) {
+            formIsValid = false;
+            errors["cpassword"] = "error_sell form-control";
+            errors["password"] = "error_sell form-control";
+        }
 
         this.setState({ errors: errors });
         return formIsValid;
     }
-    registerMehandleChange(field, e) { 
+    registerMehandleChange(field, e) {
         console.log(this.state);
         let errors = {};
         let fields = this.state.fields;
-     
-        fields[field] = e.target.value;    
+
+        fields[field] = e.target.value;
         this.setState({ fields });
     }
     passwordupdate() {
-       
-        
+
+
         if (this.passwordupdateMevalidationCheck()) {
-            console.log('cpass sss',this.refs.cpassword.value);
+            console.log('cpass sss', this.refs.cpassword.value);
             console.log('xx parms is',
-            this.props.match.params.token);
+                this.props.match.params.token);
             const userInfoVo = {
                 'password': this.refs.password.value,
                 'useremail': this.state.useremail,
@@ -135,6 +135,9 @@ class ResetPassword extends Component {
                     <div className="container">
 
                         <div className="row">
+                            <div class="inner-page-banner-heading">
+                                <h2>RESET PASSWORD</h2>
+                            </div>
                             <div className="row dashboard-content-inner">
                                 <h5>Reset password for email@email.com</h5>
                                 <div className="col-lg-12 col-md-12 col-sm-12">
@@ -142,15 +145,15 @@ class ResetPassword extends Component {
                                         <div className="col-md-6 col-sm-12">
                                             <div className="form-group">
                                                 <label>Enter new password</label>
-                                                <input  name="password"   ref="password" value={this.state.fields["password"] ? this.state.fields["password"] : ''} onChange={this.registerMehandleChange.bind(this, "password")} type="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'}    placeholder="Password"/>
+                                                <input name="password" ref="password" value={this.state.fields["password"] ? this.state.fields["password"] : ''} onChange={this.registerMehandleChange.bind(this, "password")} type="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} placeholder="Password" />
                                                 {/* <input type="password" ref="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} onChange={this.passwordupdateMehandleChange.bind(this, "password")} name="password" placeholder="password" /> */}
                                             </div>
                                             <div className="form-group">
                                                 <label>Confirm new password</label>
-                                                <input  name="cpassword"   ref= "cpassword" value={this.state.fields["cpassword"] ? this.state.fields["cpassword"] : ''} onChange={this.registerMehandleChange.bind(this, "cpassword")} type="password" className={this.state.errors["cpassword"] ? this.state.errors["cpassword"] : 'form-control'}    placeholder="Confirm Password"/>
+                                                <input name="cpassword" ref="cpassword" value={this.state.fields["cpassword"] ? this.state.fields["cpassword"] : ''} onChange={this.registerMehandleChange.bind(this, "cpassword")} type="password" className={this.state.errors["cpassword"] ? this.state.errors["cpassword"] : 'form-control'} placeholder="Confirm Password" />
                                                 {/* <input type="password" ref="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} onChange={this.passwordupdateMehandleChange.bind(this, "password")} name="password" placeholder="password" /> */}
                                             </div>
-                             
+
                                         </div>
                                     </form>
                                 </div>
