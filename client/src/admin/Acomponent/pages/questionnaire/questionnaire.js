@@ -248,7 +248,11 @@ getAllQuestionnaire() {
             console.log('DataQ:',res);
             for(let i=0; i<res.data.data.length; i++){
              var quedate = res.data.data[i].datetime;
+             console.log('quedate quedate',quedate);
+             
              const quedatetime = moment(quedate).format("YYYY-MM-DD HH:mm"); 
+             console.log('quedatetime',quedatetime);
+             
 
 
               var AssetsApproxEquity=0,AssetsApproxTotal=0,AssetsApproxBudget=0; 

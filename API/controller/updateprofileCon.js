@@ -541,7 +541,8 @@ exports.userQuestionTODb = async (req, res, next) => {
                         otherGoalServicecheck: req.body.otherGoalServicecheck,
                         otherGoalService: req.body.otherGoalService,
                         goalComment: req.body.goalComment,
-                        goalQuestion: req.body.goalQuestion
+                        goalQuestion: req.body.goalQuestion,
+                        datetime:req.body.datetime
                     })
 
                     result = await userQusetionVo.save(

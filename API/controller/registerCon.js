@@ -121,12 +121,12 @@ exports.addRegisterTODb = async (req, res, next) => {
 
 
 exports.getUserLoginTODb = async (req, res, next) => {
-    console.log('xxxxxxxxxx xxxxx', req.body.email);
+    console.log('xxxxxxxxxx xxxxx11111', req.body.email);
     
     Register.findOne({ email: req.body.email.email, password: req.body.email.password })
     .then(data => {
 
-        console.log('logindata:', data);
+        console.log('logindata:',req.body.email);
         if (data) {
             if(data.signup_status == true){
 

@@ -634,19 +634,19 @@ class Profile extends Component {
             if (!this.state.otherTypes) {
                 formIsValid = true;
                 errors.EotherTypes = "error_sell form-control";
-                Errorindicator.push(4);
+                Errorindicator.push();
             }
             if (!this.state.otherApproxValue) {
                 formIsValid = true;
                 errors.EotherApproxValue = "error_sell form-control";
-                Errorindicator.push(4);
+                Errorindicator.push();
             }
         }
         if (this.state.otherTypes || this.state.otherApproxValue) {
             if (!this.state.homeOther) {
                 formIsValid = true;
                 errors.EhomeOther = "checkfalse";
-                Errorindicator.push(4);
+                Errorindicator.push();
             }
         }
 
@@ -2589,6 +2589,9 @@ class Profile extends Component {
                 'loginuser': this.state.fields.username,
                 'data_id': event.currentTarget.dataset.id
             }
+            
+            console.log('questionInfoVoquestionInfoVo',questionInfoVo);
+            
 
             var queshowAlert = false;
 
