@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
 const creds = require('./config');
-const pdf = require('html-pdf')
-var path = require('path')
-sgMail.setApiKey(creds.SENDGRID_API_KEY);
+const pdf = require('html-pdf');
+var path = require('path');
+sgMail.setApiKey(creds.SENDGRID_API_KEY);  
 var pdfcrowd = require("pdfcrowd");
 // create the API client instance
 var client = new pdfcrowd.HtmlToPdfClient("set123", "0b2dd715e7356f8ccfec32665d353774");
@@ -201,7 +201,8 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
                     from: '"SET IT AND LEAVE IT" <' + creds.USER + '>', // sender address
                     to: req.body.useremail, //creds.USER, // list of receivers
                     subject: 'Reset your password.', // Subject line
-                    html: 'We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://localhost:3300/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.'// html body
+                    html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',  //local
+                    //html: 'We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.' //live
                 };
                 sgMail.send(UpdateProfilemsg);
 

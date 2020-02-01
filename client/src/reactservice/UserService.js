@@ -5,7 +5,7 @@ export default class RegisterService {
 
     constructor() {
         
-        // this.domain = 'ec2-18-221-255-18.us-east-2.compute.amazonaws.com';
+         //this.domain = 'ec2-18-221-255-18.us-east-2.compute.amazonaws.com'; 
         this.domain = 'http://localhost:3300';
     }    
 

@@ -4747,6 +4747,11 @@ hr.hrtag {
 
 
 /** my -------------------------- css **/
+span.wpcf7-list-item.other12 {
+  float: right;
+  margin-right: 0px;
+  margin-top: 21px;
+}
 
 button.btn.mydata {
   width: 268px !important;

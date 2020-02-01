@@ -496,7 +496,7 @@ class Profile extends Component {
         if (this.state.iWeRent) {
             if (!this.state.monthlyRent) {
                 formIsValid = true;
-                errors.EmonthlyRent = "checkfalse";  // error_sell form-control
+                errors.EmonthlyRent = "error_sell form-control";
                 Errorindicator.push(5);
             }
         }
@@ -504,7 +504,7 @@ class Profile extends Component {
         if (this.state.monthlyRent) {
             if (!this.state.iWeRent) {
                 formIsValid = true;
-                errors.EiWeRent = "checkfalse";
+                errors.EiWeRent = "error_sell form-control";
                 Errorindicator.push(5);
             }
         }
@@ -557,16 +557,14 @@ class Profile extends Component {
                 Errorindicator.push(5);
             }
         }
+
         if (!this.state.iWeRent) {
-            console.log('iWeRent123');
-            
             formIsValid = true;
             errors.EiWeRent = "checktrue";
             Errorindicator.push(5);
         } else {
             formIsValid = true;
             errors.EhomeBox = "checktrue";
-
         }
 
         if (!this.state.homeBox) {
@@ -783,13 +781,14 @@ class Profile extends Component {
 
 
 
-        if (!this.state.medicare && !this.state.supplementalHealth && !this.state.longtermcare && !this.state.noInsurance && !this.state.lifeInsurance) {
+        if (!this.state.medicare && !this.state.supplementalHealth && !this.state.longtermcare && !this.state.noInsurance && !this.state.lifeInsurance && !this.state.inotherbox) {
             formIsValid = true;
             errors.EnoInsurance = "checkfalse";
             errors.Emedicare = "checkfalse";
             errors.EsupplementalHealth = "checkfalse";
             errors.Elongtermcare = "checkfalse";
             errors.ElifeInsurance = "checkfalse";
+            errors.Einotherbox = "checkfalse";
             Errorindicator.push(7);
         } else {
             formIsValid = true;
@@ -798,6 +797,7 @@ class Profile extends Component {
             errors.EsupplementalHealth = "checktrue";
             errors.Elongtermcare = "checktrue";
             errors.ElifeInsurance = "checktrue";
+            errors.Einotherbox = "checktrue";
         }
 
         if (this.state.lifeInsurance) {
@@ -1913,15 +1913,16 @@ class Profile extends Component {
                 if (value) { t = ''; }
                 this.setState({ [name]: t, })
 
-                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && this.state.CnoInsurance && !this.state.ClifeInsurance) {
+                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && this.state.CnoInsurance && !this.state.ClifeInsurance &&!this.state.Cinotherbox) {
                     this.setState({
                         EnoInsurance: "checkfalse",
                         Emedicare: "checkfalse",
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
-                        ElifeInsurance: "checkfalse"
+                        ElifeInsurance: "checkfalse",
+                        Einotherbox: "checkfalse"
                     });
-                }
+                } 
 
             } else {
                 this.setState({ [name]: value, })
@@ -1930,7 +1931,8 @@ class Profile extends Component {
                     Emedicare: "checktrue",
                     EsupplementalHealth: "checktrue",
                     Elongtermcare: "checktrue",
-                    ElifeInsurance: "checktrue"
+                    ElifeInsurance: "checktrue",
+                    Einotherbox: "checktrue"
                 })
             }
         }
@@ -1941,13 +1943,15 @@ class Profile extends Component {
                 let t = '';
                 if (value) { t = ''; }
                 this.setState({ [name]: t, })
-                if (this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && !this.state.CnoInsurance && !this.state.ClifeInsurance) {
+                if (this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && !this.state.CnoInsurance && !this.state.ClifeInsurance && !this.state.Cinotherbox) {
                     this.setState({
                         EnoInsurance: "checkfalse",
                         Emedicare: "checkfalse",
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
-                        ElifeInsurance: "checkfalse"
+                        ElifeInsurance: "checkfalse",
+                        Einotherbox:"checkfalse"
+
                     });
                 }
             } else {
@@ -1957,7 +1961,8 @@ class Profile extends Component {
                     Emedicare: "checktrue",
                     EsupplementalHealth: "checktrue",
                     Elongtermcare: "checktrue",
-                    ElifeInsurance: "checktrue"
+                    ElifeInsurance: "checktrue",
+                    Einotherbox:"checktrue"
                 })
             }
         }
@@ -1968,13 +1973,14 @@ class Profile extends Component {
                 let t = '';
                 if (value) { t = ''; }
                 this.setState({ [name]: t, })
-                if (!this.state.Cmedicare && this.state.CsupplementalHealth && !this.state.Clongtermcare && !this.state.CnoInsurance && !this.state.ClifeInsurance) {
+                if (!this.state.Cmedicare && this.state.CsupplementalHealth && !this.state.Clongtermcare && !this.state.CnoInsurance && !this.state.ClifeInsurance && !this.state.Cinotherbox) {
                     this.setState({
                         EnoInsurance: "checkfalse",
                         Emedicare: "checkfalse",
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
-                        ElifeInsurance: "checkfalse"
+                        ElifeInsurance: "checkfalse",
+                        Einotherbox: "checkfalse"
                     });
                 }
             } else {
@@ -1984,7 +1990,8 @@ class Profile extends Component {
                     Emedicare: "checktrue",
                     EsupplementalHealth: "checktrue",
                     Elongtermcare: "checktrue",
-                    ElifeInsurance: "checktrue"
+                    ElifeInsurance: "checktrue",
+                    Einotherbox: "checktrue"
                 })
             }
         }
@@ -1995,13 +2002,14 @@ class Profile extends Component {
                 let t = '';
                 if (value) { t = ''; }
                 this.setState({ [name]: t, })
-                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && this.state.Clongtermcare && !this.state.CnoInsurance && !this.state.ClifeInsurance) {
+                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && this.state.Clongtermcare && !this.state.CnoInsurance && !this.state.ClifeInsurance && !this.state.Cinotherbox) {
                     this.setState({
                         EnoInsurance: "checkfalse",
                         Emedicare: "checkfalse",
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
-                        ElifeInsurance: "checkfalse"
+                        ElifeInsurance: "checkfalse",
+                        Einotherbox: "checkfalse"
                     });
                 }
             } else {
@@ -2011,7 +2019,8 @@ class Profile extends Component {
                     Emedicare: "checktrue",
                     EsupplementalHealth: "checktrue",
                     Elongtermcare: "checktrue",
-                    ElifeInsurance: "checktrue"
+                    ElifeInsurance: "checktrue",
+                    Einotherbox: "checktrue"
                 })
             }
         }
@@ -2029,13 +2038,14 @@ class Profile extends Component {
                 let t = '';
                 if (value) { t = ''; }
 
-                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && !this.state.CnoInsurance && this.state.ClifeInsurance) {
+                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && !this.state.CnoInsurance && this.state.ClifeInsurance && !this.state.Cinotherbox) {
                     this.setState({
                         EnoInsurance: "checkfalse",
                         Emedicare: "checkfalse",
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
-                        ElifeInsurance: "checkfalse"
+                        ElifeInsurance: "checkfalse",
+                        Einotherbox:"checkfalse"
                     });
                 }
 
@@ -2047,11 +2057,26 @@ class Profile extends Component {
                     Emedicare: "checktrue",
                     EsupplementalHealth: "checktrue",
                     Elongtermcare: "checktrue",
-                    ElifeInsurance: "checktrue"
+                    ElifeInsurance: "checktrue",
+                    Einotherbox: "checktrue"
                 })
             }
         }
 
+
+        // if (name == 'inotherbox') {
+        //     if (!this.state.inother) {
+        //         this.setState({ Einother: "error_sell form-control" })
+        //     }
+        //     this.setState({ Cinotherbox: !this.state.Cinotherbox })
+        //     if (this.state.Cinotherbox) {
+        //         let t = '';
+        //         if (value) { t = ''; }
+        //         this.setState({ [name]: t, Einother: "form-control" })
+        //     } else {
+        //         this.setState({ [name]: value, })
+        //     }
+        // }
 
         if (name == 'inotherbox') {
             if (!this.state.inother) {
@@ -2061,11 +2086,32 @@ class Profile extends Component {
             if (this.state.Cinotherbox) {
                 let t = '';
                 if (value) { t = ''; }
-                this.setState({ [name]: t, Einother: "form-control" })
+
+                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && !this.state.CnoInsurance && this.state.ClifeInsurance && this.state.Cinotherbox) {
+                    this.setState({
+                        EnoInsurance: "checkfalse",
+                        Emedicare: "checkfalse",
+                        EsupplementalHealth: "checkfalse",
+                        Elongtermcare: "checkfalse",
+                        ElifeInsurance: "checkfalse",
+                        Einotherbox:"checkfalse"
+                    });
+                }
+
+                this.setState({ [name]: t, Einother: "form-control", Elifeamount: "form-control" })
             } else {
                 this.setState({ [name]: value, })
+                this.setState({
+                    EnoInsurance: "checktrue",
+                    Emedicare: "checktrue",
+                    EsupplementalHealth: "checktrue",
+                    Elongtermcare: "checktrue",
+                    ElifeInsurance: "checktrue",
+                    Einotherbox: "checktrue"
+                })
             }
         }
+
 
         if (name == 'analyticalInExperience') {
             this.setState({ CanalyticalInExperience: !this.state.CanalyticalInExperience })
@@ -3096,8 +3142,8 @@ class Profile extends Component {
 
         }
 
-        if (this.state.banking || this.state.brokerage || this.state.retirementAccount || this.state.otherApproxValue) {
-            let banking = 0, brokerage = 0, retirementAccount = 0, otherApproxValue = 0;
+        if (this.state.banking || this.state.brokerage || this.state.retirementAccount || this.state.rothAccount || this.state.otherTypes || this.state.otherApproxValue) {
+            let banking = 0, brokerage = 0, retirementAccount = 0, rothAccount= 0, otherTypes= 0,otherApproxValue = 0;
             if (this.state.banking) {
                 banking = parseInt(this.state.banking.replace(/,/g, ""));
             } else {
@@ -3116,13 +3162,24 @@ class Profile extends Component {
                 retirementAccount = 0;
             }
 
+            if(this.state.rothAccount){
+                rothAccount = parseInt(this.state.rothAccount.replace(/,/g,""));
+            }else{
+                rothAccount = 0;
+            }
+        if(this.state.otherTypes){
+            otherTypes = parseInt(this.state.otherTypes.replace(/,/g,""))
+        }else{
+            otherTypes = 0;
+        }
+
             if (this.state.otherApproxValue) {
                 otherApproxValue = parseInt(this.state.otherApproxValue.replace(/,/g, ""))
             } else {
                 otherApproxValue = 0;
             }
 
-            AssetsApproxTotal = banking + brokerage + retirementAccount + otherApproxValue;
+            AssetsApproxTotal = banking + brokerage + retirementAccount + rothAccount + otherTypes + otherApproxValue;
             console.log('banking:', this.state.banking)
             console.log('brokerage:', this.state.brokerage)
             console.log('retirementAccount:', this.state.retirementAccount)
@@ -4012,6 +4069,7 @@ class Step4 extends React.Component {
                                 <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>Kids</label>
                                 <select value={this.props.Kids} id="Kids" name="Kids" onChange={this.props.handleChange} className={this.props.EKids ? this.props.EKids : 'form-control'} >
                                     <option value="0">Select</option>
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"> 2 </option>
                                     <option value="3"> 3 </option>
@@ -4027,6 +4085,7 @@ class Step4 extends React.Component {
                                 <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>Grandkids</label>
                                 <select value={this.props.grandkid} id="grandkid" name="grandkid" onChange={this.props.handleChange} className={this.props.Egrandkid ? this.props.Egrandkid : 'form-control'} >
                                     <option value="0">Select</option>
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"> 2 </option>
                                     <option value="3"> 3 </option>
@@ -4042,6 +4101,7 @@ class Step4 extends React.Component {
                                 <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>Pets</label>
                                 <select value={this.props.pets} id="pets" name="pets" onChange={this.props.handleChange} className={this.props.Epets ? this.props.Epets : 'form-control'} >
                                     <option value="0">Select</option>
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"> 2 </option>
                                     <option value="3"> 3 </option>
@@ -4511,10 +4571,9 @@ class Step6 extends React.Component {
 
                     <div className="col-md-12 col-sm-12">
                         <div className="form-group">
-                            <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>Approx. total: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            {/* {this.props.AssetsApproxBudget ? formatter.format(this.props.AssetsApproxBudget) : '$0,000'} */}
-                            <NumberFormat
-                                // className={this.props.Ediscretionary ? this.props.Ediscretionary : 'form-control'}
+                             <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>Approx. total: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                             {this.props.AssetsApproxBudget ? formatter.format(this.props.AssetsApproxBudget) : '$0,000'}
+                            {/* <NumberFormat
                                 className={this.props.AssetsApproxBudget ? this.props.AssetsApproxBudget : 'form-control'}
                                 id="AssetsApproxBudget"
                                 name="AssetsApproxBudget"
@@ -4523,7 +4582,7 @@ class Step6 extends React.Component {
                                 value={this.props.AssetsApproxBudget}
                                 onChange={this.props.handleChange}
                                 thousandSeparator={true}
-                            />
+                            /> */}
                         </div>
                     </div>
 
@@ -4538,7 +4597,6 @@ class Step6 extends React.Component {
                             </p>
                         </td>
                         <td>
-
                             <NumberFormat
                                 className={this.props.EotherApproxValue ? this.props.EotherApproxValue : 'form-control'}
                                 id="otherApproxValue"
@@ -4601,9 +4659,7 @@ class Step7 extends React.Component {
                             {/* <p className="checkboxContent"> <input type="checkbox" className={this.props.EnoInsurance ? this.props.EnoInsurance : 'checktrue'}  defaultChecked={this.props.CnoInsurance ? 'checked' : ''}  onChange={this.props.handleChange}  value="I/we have no insurance" for="" name="noInsurance"/> I/we have no insurance</p>
  
                         <p className="checkboxContent"> <input type="checkbox" className={this.props.Emedicare ? this.props.Emedicare : 'checktrue'}  defaultChecked={this.props.Cmedicare ? 'checked' : ''}  onChange={this.props.handleChange}  value="Medicare" for="" name="medicare"/> Medicare</p>
-
                         <p className="checkboxContent"> <input type="checkbox" className={this.props.EsupplementalHealth ? this.props.EsupplementalHealth : 'checktrue'}  defaultChecked={this.props.CsupplementalHealth ? 'checked' : ''} onChange={this.props.handleChange} value="Supplemental health" for="" name="supplementalHealth"/> Supplemental health </p>
-
                         <p className="checkboxContent"> <input type="checkbox" className={this.props.Elongtermcare ? this.props.Elongtermcare : 'checktrue'} defaultChecked={this.props.Clongtermcare ? 'checked' : ''} onChange={this.props.handleChange} value="Long term care" for="" name="longtermcare"/> Long term care</p> */}
 
                             <p className="checkboxContent">
@@ -4686,8 +4742,6 @@ class Step7 extends React.Component {
 
                     {/* <div className="col-md-12 col-sm-12">
                         <div className="form-group">
-
-
                             <div className="sideFix">
                                 <p className="checkboxContent sidefixbox">
                                     <span class="wpcf7-checkbox">
@@ -4704,7 +4758,6 @@ class Step7 extends React.Component {
                                     onChange={this.props.handleChange}
                                     placeholder="E.g., medical condition"
                                 />
-
                             </div>
                         </div>
                     </div> */}
@@ -4828,13 +4881,9 @@ class Step8 extends React.Component {
                             <label style={{ fontWeight: 700, fontSize: "18px" }}>Investment performance goals (tick all that apply)</label>
 
                             {/* <p className="checkboxContent"> <input type="checkbox" class={this.props.EcapitalPreservation ? this.props.EcapitalPreservation : 'checktrue'}   onChange={this.props.handleChange} defaultChecked={this.props.CcapitalPreservation ? 'checked' : ''}   value="Capital preservation (lower returns are OK if volatility is low)" for="" name="capitalPreservation"/> Capital preservation (lower returns are OK if volatility is low)</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.EinvestIncome ? this.props.EinvestIncome : 'checktrue'}    defaultChecked={this.props.CinvestIncome ? 'checked' : ''} onChange={this.props.handleChange} value="Income (income for retirement or other purposes is a top priority)" for="" name="investIncome"/> Income (income for retirement or other purposes is a top priority) </p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.EinvestGrowth ? this.props.EinvestGrowth : 'checktrue'} defaultChecked={this.props.CinvestGrowth ? 'checked' : ''} onChange={this.props.handleChange} value="Growth (willing to accept higher volatility for higher returns)" for="" name="investGrowth"/> Growth (willing to accept higher volatility for higher returns)</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.EinvestGrowthIncome ? this.props.EinvestGrowthIncome : 'checktrue'} defaultChecked={this.props.CinvestGrowthIncome ? 'checked' : ''} onChange={this.props.handleChange} value="Growth + income (higher volatility acceptable if income is secure)" for="" name="investGrowthIncome"/> Growth + income (higher volatility acceptable if income is secure)</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.EinvestAggressiveGrowth ? this.props.EinvestAggressiveGrowth : 'checktrue'}  defaultChecked={this.props.CinvestAggressiveGrowth ? 'checked' : ''} onChange={this.props.handleChange} value="Aggressive growth (returns are top priority and significant volatility is acceptable)" for="" name="investAggressiveGrowth"/> Aggressive growth (returns are top priority and significant volatility is acceptable)</p> */}
 
                             <p className="checkboxContent">
@@ -4925,9 +4974,7 @@ class Step9 extends React.Component {
                         <div className="form-group">
                             <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>How do you view your risk tolerance? </label>
                             {/* <p className="checkboxContent"> <input type="checkbox" class={this.props.EriskAggressive ? this.props.EriskAggressive : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.CriskAggressive ? 'checked' : ''} value="Aggressive (healthy appetite for risk)" for="" name="riskAggressive"/> Aggressive (healthy appetite for risk)</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.EriskModerate ? this.props.EriskModerate : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.CriskModerate ? 'checked' : ''} value="Moderate (seek more balanced risk)" for="" name="riskModerate"/> Moderate (seek more balanced risk)</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.EriskConservative ? this.props.EriskConservative : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.CriskConservative ? 'checked' : ''} value="Conservative (generally prefer less risk)" for="" name="riskConservative"/> Conservative (generally prefer less risk)</p> */}
 
                             <p className="checkboxContent">
@@ -5027,11 +5074,8 @@ class Step9 extends React.Component {
 
 
                                 {/* <p className="checkboxContent"> <input type="checkbox" class={this.props.Eportfolio1 ? this.props.Eportfolio1 : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.Cportfolio1 ? 'checked' : ''} value="Portfolio 1 (most conservative)" for="" name="portfolio1"/> Portfolio 1 (most conservative)</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.Eportfolio2 ? this.props.Eportfolio2 : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.Cportfolio2 ? 'checked' : ''} value="Portfolio 2" for="" name="portfolio2"/> Portfolio 2</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.Eportfolio3 ? this.props.Eportfolio3 : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.Cportfolio3 ? 'checked' : ''} value="Portfolio 3" for="" name="portfolio3"/> Portfolio 3</p>
-
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.Eportfolio4 ? this.props.Eportfolio4 : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.Cportfolio4 ? 'checked' : ''} value="Portfolio 4" for="" name="portfolio4"/> Portfolio 4</p>
  
                         <p className="checkboxContent"> <input type="checkbox" class={this.props.Eportfolio5 ? this.props.Eportfolio5 : 'checktrue'}  onChange={this.props.handleChange} defaultChecked={this.props.Cportfolio5 ? 'checked' : ''} value="Portfolio 5 (most aggressive)" for="" name="portfolio5"/> Portfolio 5 (most aggressive)</p> */}
