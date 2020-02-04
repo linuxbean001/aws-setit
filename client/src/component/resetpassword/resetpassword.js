@@ -30,7 +30,7 @@ class ResetPassword extends Component {
         const Userdata = {
             'useremail': this.state.useremail
         }
-        API.getpasswordlinkstatus(Userdata)
+        API.getpasswordlinkstatus(Userdata) 
             .then(res => {
                 console.log('frontres:', res.data);
                 if (res.data.data) {
@@ -53,7 +53,6 @@ class ResetPassword extends Component {
     }
 
     passwordupdateMevalidationCheck() {
-        // console.log('222222222');
         let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
@@ -80,6 +79,7 @@ class ResetPassword extends Component {
         this.setState({ errors: errors });
         return formIsValid;
     }
+    
     registerMehandleChange(field, e) {
         console.log(this.state);
         let errors = {};
@@ -88,9 +88,8 @@ class ResetPassword extends Component {
         fields[field] = e.target.value;
         this.setState({ fields });
     }
+
     passwordupdate() {
-
-
         if (this.passwordupdateMevalidationCheck()) {
             console.log('cpass sss', this.refs.cpassword.value);
             console.log('xx parms is',
@@ -100,6 +99,8 @@ class ResetPassword extends Component {
                 'useremail': this.state.useremail,
                 'token': this.props.match.params.token
             }
+            console.log('userInfoVo123',userInfoVo);
+            
             API.emailpasswordResetWithSendEmail(userInfoVo)
                 .then((result) => {
                     if (result.data.success) {
@@ -128,7 +129,7 @@ class ResetPassword extends Component {
     }
 
     render() {
-        console.log('dataaaaa:', this.state.presetdata.data);
+        console.log('dataaaaa:', this.state.presetdata.data); 
         return (
             <div className="password-profile-section">
                 <section id="password-dashboard-main">

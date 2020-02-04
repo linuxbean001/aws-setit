@@ -2,7 +2,7 @@ const updateProfile = require('../models/registerModel');
 const Activitylog = require('../models/useractivityModel');
 const userQusetion = require('../models/questionModel');
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');  
 const sgMail = require('@sendgrid/mail');
 const creds = require('./config');
 const pdf = require('html-pdf');
@@ -192,7 +192,8 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
 
     try {
         let userdata = await updateProfile.findOne({ email: req.body.useremail });
-
+             console.log('userdatauserdata',userdata);
+             
         _getToken(userdata)
             .then(token => {
                 console.log('token', token);
@@ -201,8 +202,8 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
                     from: '"SET IT AND LEAVE IT" <' + creds.USER + '>', // sender address
                     to: req.body.useremail, //creds.USER, // list of receivers
                     subject: 'Reset your password.', // Subject line
-                    html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',  //local
-                    //html: 'We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.' //live
+                    //html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',
+                    html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://localhost:3300/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',
                 };
                 sgMail.send(UpdateProfilemsg);
 
@@ -240,9 +241,10 @@ exports.useremailresetpasswordTODb = async (req, res, next) => {
 
     try {
         let userdata = await updateProfile.findOne({ email: decoded.email });
-
+        console.log('userdatauserdata',userdata);
         if (userdata) {
-
+            
+            
             const result = await updateProfile.findByIdAndUpdate({ _id: userdata._id, }, {
                 password: req.body.password,
                 presetemail: new Date(),
@@ -687,7 +689,7 @@ exports.userQuestionTODb = async (req, res, next) => {
                 <br/><br/>   
                 <p style="margin:0;font-size:14px">Best regards,</p>
                  <p style="margin-bottom:10px;font-size:16px"><em style="color:#9464B8">SET IT <span style="font-size:10px;">AND</span> LEAVE IT</em> Team</p><br/><br/>
-                <a style="text-decoration:none;"  href="${creds.domain}/front"><img class="logo" style="width:200px;height:auto" src="http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/static/media/logo1.8cbebd0f.png"  alt="My_Logo"></a>
+                <a style="text-decoration:none;"  href="${creds.domain}/front"><img class="logo" style="width:200px;height:auto" src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da"  alt="My_Logo"></a>
                 <br/><br/> <p style="margin-top:10px;font-size:16px"><b>Phone:</b> <a href="tel:18669005050">1-866-900-5050</a> | <b>Email:</b> <a href="mailto:info@setitandleaveit.com">info@SetItandLeaveIt.com</a> | <b>Web:</b> <a href="www.setitandleaveit.com">www.SetItandLeaveIt.com</a></p>
 
             </div>`;

@@ -463,7 +463,7 @@ class Profile extends Component {
         //     Errorindicator.push(4);
         // }
 
-
+     
 
         if (this.state.homeBox) {
             if (!this.state.homeValue) {
@@ -530,33 +530,33 @@ class Profile extends Component {
             if (!this.state.brokerage) {
                 formIsValid = true;
                 errors.Ebrokerage = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
-        if(this.state.brokerage){
-            if(!this.state.homeBrokerage){
+        if (this.state.brokerage) {
+            if (!this.state.homeBrokerage) {
                 formIsValid = true;
                 errors.EhomeBrokerage = "error_sell form-control";
-                Errorindicator.push(5);
-    
-            }
-        }
-     if(!this.state.brokerage){
-         if(this.state.homeBrokerage){
-             formIsValid = true;
-             errors.Ebrokerage = "error_sell form-control"
-             Errorindicator.push(5);
-         }
-     }
+                Errorindicator.push(6);
 
-        if (this.state.monthlyRent) {
-            if (!this.state.homeBanking && !this.state.homeBrokerage) {
-                formIsValid = true;
-                errors.EhomeBanking = "checkfalse";
-                errors.EhomeBrokerage = "checkfalse";
-                Errorindicator.push(5);
             }
         }
+        if (!this.state.brokerage) {
+            if (this.state.homeBrokerage) {
+                formIsValid = true;
+                errors.Ebrokerage = "error_sell form-control"
+                Errorindicator.push(6);
+            }
+        }
+
+        // if (this.state.monthlyRent) {
+        //     if (!this.state.homeBanking && !this.state.homeBrokerage) {
+        //         formIsValid = true;
+        //         errors.EhomeBanking = "checkfalse";
+        //         errors.EhomeBrokerage = "checkfalse";
+        //         Errorindicator.push(5);
+        //     }
+        // }
 
         if (!this.state.iWeRent) {
             formIsValid = true;
@@ -595,7 +595,7 @@ class Profile extends Component {
             errors.EhomeOther = "checkfalse";
             errors.EhomeRetirementAccount = "checkfalse";
             errors.EhomeRothAccount = "checkfalse";
-            Errorindicator.push(5);
+            Errorindicator.push(6);
         } else {
             formIsValid = true;
             errors.EhomeBrokerage = "checktrue";
@@ -618,7 +618,7 @@ class Profile extends Component {
             if (!this.state.retirementAccount) {
                 formIsValid = true;
                 errors.EretirementAccount = "error_sell form-control";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -626,7 +626,7 @@ class Profile extends Component {
             if (!this.state.homeRetirementAccount) {
                 formIsValid = true;
                 errors.EhomeRetirementAccount = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -634,14 +634,14 @@ class Profile extends Component {
             if (!this.state.rothAccount) {
                 formIsValid = true;
                 errors.ErothAccount = "error_sell form-control";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
         if (this.state.rothAccount) {
             if (!this.state.homeRothAccount) {
                 formIsValid = true;
                 errors.EhomeRothAccount = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -649,19 +649,19 @@ class Profile extends Component {
             if (!this.state.otherTypes) {
                 formIsValid = true;
                 errors.EotherTypes = "error_sell form-control";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
             if (!this.state.otherApproxValue) {
                 formIsValid = true;
-                errors.EotherApproxValue = "error_sell form-control"; 
-                Errorindicator.push(5);
+                errors.EotherApproxValue = "error_sell form-control";
+                Errorindicator.push(6);
             }
         }
         if (this.state.otherTypes || this.state.otherApproxValue) {
             if (!this.state.homeOther) {
                 formIsValid = true;
                 errors.EhomeOther = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -684,14 +684,14 @@ class Profile extends Component {
             if (!this.state.socailSecurity) {
                 formIsValid = true;
                 errors.EsocailSecurity = "error_sell form-control";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
         if (this.state.socailSecurity) {
             if (!this.state.homeSS) {
                 formIsValid = true;
                 errors.EhomeSS = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -700,14 +700,14 @@ class Profile extends Component {
             if (!this.state.pension) {
                 formIsValid = true;
                 errors.Epension = "error_sell form-control";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
         if (this.state.pension) {
             if (!this.state.homePension) {
                 formIsValid = true;
                 errors.EhomePension = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -766,7 +766,7 @@ class Profile extends Component {
         if (!this.state.essential) {
             formIsValid = true;
             errors.Eessential = "error_sell form-control";
-            Errorindicator.push(6);
+            Errorindicator.push(7);
         }
         // if(!this.state.discretionary){
         //     formIsValid = true;
@@ -789,7 +789,7 @@ class Profile extends Component {
             errors.Elongtermcare = "checkfalse";
             errors.ElifeInsurance = "checkfalse";
             errors.Einotherbox = "checkfalse";
-            Errorindicator.push(7);
+            Errorindicator.push(8);
         } else {
             formIsValid = true;
             errors.EnoInsurance = "checktrue";
@@ -804,19 +804,19 @@ class Profile extends Component {
             if (!this.state.lifeInType) {
                 formIsValid = true;
                 errors.ElifeInType = "error_sell form-control";
-                Errorindicator.push(7);
+                Errorindicator.push(8);
             }
             if (!this.state.lifeamount) {
                 formIsValid = true;
                 errors.Elifeamount = "error_sell form-control";
-                Errorindicator.push(7);
+                Errorindicator.push(8);
             }
         }
         if (this.state.lifeInType || this.state.lifeamount) {
             if (!this.state.lifeInsurance) {
                 formIsValid = true;
                 errors.ElifeInsurance = "checkfalse";
-                Errorindicator.push(7);
+                Errorindicator.push(8);
             }
         }
 
@@ -824,7 +824,7 @@ class Profile extends Component {
             if (!this.state.inother) {
                 formIsValid = true;
                 errors.Einother = "error_sell form-control";
-                Errorindicator.push(7);
+                Errorindicator.push(8);
             }
         }
 
@@ -832,7 +832,7 @@ class Profile extends Component {
             if (!this.state.inotherbox) {
                 formIsValid = true;
                 errors.Einotherbox = "checkfalse";
-                Errorindicator.push(7);
+                Errorindicator.push(8);
             }
         }
 
@@ -841,18 +841,18 @@ class Profile extends Component {
         if (!this.state.currentAllocationStock) {
             formIsValid = true;
             errors.EcurrentAllocationStock = "error_sell form-control";
-            Errorindicator.push(8);
+            Errorindicator.push(9);
         }
 
         if (!this.state.experience_1_10) {
             formIsValid = true;
             errors.Eexperience_1_10 = "error_sell form-control";
-            Errorindicator.push(8);
+            Errorindicator.push(9);
         }
         if (!this.state.expectations) {
             formIsValid = true;
             errors.Eexpectations = "error_sell form-control";
-            Errorindicator.push(8);
+            Errorindicator.push(9);
         }
         // if(!this.state.experience_gb){
         //     formIsValid = true;
@@ -873,7 +873,7 @@ class Profile extends Component {
             errors.EinvestGrowth = "checkfalse";
             errors.EinvestGrowthIncome = "checkfalse";
             errors.EinvestAggressiveGrowth = "checkfalse";
-            Errorindicator.push(8);
+            Errorindicator.push(9);
         } else {
             formIsValid = true;
             errors.EcapitalPreservation = "checktrue";
@@ -888,22 +888,22 @@ class Profile extends Component {
         if (!this.state.portfolioDrawdown) {
             formIsValid = true;
             errors.EportfolioDrawdown = "error_sell form-control";
-            Errorindicator.push(9);
+            Errorindicator.push(10);
         }
         if (!this.state.riskPreservation) {
             formIsValid = true;
             errors.EriskPreservation = "error_sell form-control";
-            Errorindicator.push(9);
+            Errorindicator.push(10);
         }
         if (!this.state.riskIncome) {
             formIsValid = true;
             errors.EriskIncome = "error_sell form-control";
-            Errorindicator.push(9);
+            Errorindicator.push(10);
         }
         if (!this.state.riskGrowth) {
             formIsValid = true;
             errors.EriskGrowth = "error_sell form-control";
-            Errorindicator.push(9);
+            Errorindicator.push(10);
         }
         // if(!this.state.lastMarketDownturn){
         //     formIsValid = true;
@@ -918,7 +918,7 @@ class Profile extends Component {
             errors.EriskAggressive = "checkfalse";
             errors.EriskModerate = "checkfalse";
             errors.EriskConservative = "checkfalse";
-            Errorindicator.push(9);
+            Errorindicator.push(10);
         } else {
             formIsValid = true;
             errors.EriskAggressive = "checktrue";
@@ -933,7 +933,7 @@ class Profile extends Component {
             errors.Eportfolio3 = "checkfalse";
             errors.Eportfolio4 = "checkfalse";
             errors.Eportfolio5 = "checkfalse";
-            Errorindicator.push(9);
+            Errorindicator.push(10);
         } else {
             formIsValid = true;
             errors.Eportfolio1 = "checktrue";
@@ -973,14 +973,14 @@ class Profile extends Component {
             if (!this.state.referralContent) {
                 formIsValid = true;
                 errors.EreferralContent = "error_sell form-control";
-                Errorindicator.push(10);
+                Errorindicator.push(11);
             }
         }
         if (this.state.referralContent) {
             if (!this.state.referral) {
                 formIsValid = true;
                 errors.Ereferral = "checkfalse";
-                Errorindicator.push(10);
+                Errorindicator.push(11);
             }
         }
 
@@ -988,14 +988,14 @@ class Profile extends Component {
             if (!this.state.otherOthersContent) {
                 formIsValid = true;
                 errors.EotherOthersContent = "error_sell form-control";
-                Errorindicator.push(10);
+                Errorindicator.push(11);
             }
         }
         if (this.state.otherOthersContent) {
             if (!this.state.otherOthers) {
                 formIsValid = true;
                 errors.EotherOthers = "checkfalse";
-                Errorindicator.push(10);
+                Errorindicator.push(11);
             }
         }
 
@@ -1004,7 +1004,7 @@ class Profile extends Component {
             if (!this.state.homeBrokerage) {
                 formIsValid = true;
                 errors.EhomeBrokerage = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -1012,7 +1012,7 @@ class Profile extends Component {
             if (!this.state.homeBanking) {
                 formIsValid = true;
                 errors.EhomeBanking = "checkfalse";
-                Errorindicator.push(5);
+                Errorindicator.push(6);
             }
         }
 
@@ -1020,7 +1020,7 @@ class Profile extends Component {
             if (!this.state.banking) {
                 formIsValid = true;
                 errors.Ebanking = "checkfalse";
-                Errorindicator.push(5)
+                Errorindicator.push(6)
             }
         }
 
@@ -1055,10 +1055,11 @@ class Profile extends Component {
             var elmnt = document.getElementById("profileDashboard");
             elmnt.scrollIntoView({ behavior: "smooth" });
             let currentStep = this.state.currentStep
-            currentStep = currentStep >= 10 ? 10 : currentStep + 1
+            currentStep = currentStep >= 11 ? 11 : currentStep + 1
             this.setState({
                 currentStep: currentStep
             })
+            
         }
     }
 
@@ -1913,7 +1914,7 @@ class Profile extends Component {
                 if (value) { t = ''; }
                 this.setState({ [name]: t, })
 
-                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && this.state.CnoInsurance && !this.state.ClifeInsurance &&!this.state.Cinotherbox) {
+                if (!this.state.Cmedicare && !this.state.CsupplementalHealth && !this.state.Clongtermcare && this.state.CnoInsurance && !this.state.ClifeInsurance && !this.state.Cinotherbox) {
                     this.setState({
                         EnoInsurance: "checkfalse",
                         Emedicare: "checkfalse",
@@ -1922,7 +1923,7 @@ class Profile extends Component {
                         ElifeInsurance: "checkfalse",
                         Einotherbox: "checkfalse"
                     });
-                } 
+                }
 
             } else {
                 this.setState({ [name]: value, })
@@ -1950,7 +1951,7 @@ class Profile extends Component {
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
                         ElifeInsurance: "checkfalse",
-                        Einotherbox:"checkfalse"
+                        Einotherbox: "checkfalse"
 
                     });
                 }
@@ -1962,7 +1963,7 @@ class Profile extends Component {
                     EsupplementalHealth: "checktrue",
                     Elongtermcare: "checktrue",
                     ElifeInsurance: "checktrue",
-                    Einotherbox:"checktrue"
+                    Einotherbox: "checktrue"
                 })
             }
         }
@@ -2045,7 +2046,7 @@ class Profile extends Component {
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
                         ElifeInsurance: "checkfalse",
-                        Einotherbox:"checkfalse"
+                        Einotherbox: "checkfalse"
                     });
                 }
 
@@ -2094,7 +2095,7 @@ class Profile extends Component {
                         EsupplementalHealth: "checkfalse",
                         Elongtermcare: "checkfalse",
                         ElifeInsurance: "checkfalse",
-                        Einotherbox:"checkfalse"
+                        Einotherbox: "checkfalse"
                     });
                 }
 
@@ -2653,9 +2654,9 @@ class Profile extends Component {
                 'loginuser': this.state.fields.username,
                 'data_id': event.currentTarget.dataset.id
             }
-            
-            console.log('questionInfoVoquestionInfoVo',questionInfoVo);
-            
+
+            console.log('questionInfoVoquestionInfoVo', questionInfoVo);
+
 
             var queshowAlert = false;
 
@@ -2716,14 +2717,15 @@ class Profile extends Component {
 
     get nextButton() {
         let currentStep = this.state.currentStep
-        if (currentStep <= 10) {
+        if (currentStep <= 11) {
+            
             return (
                 <div className="buttonGroups">
                     <button className={`btn btn-primary nextbtn float-right contQuebtn classnext${this.state.currentStep}`} type="button" onClick={this._next}>START QUESTIONNAIRE</button>
                     <button className={`btn btn-primary nextbtn  classnext${this.state.currentStep}`} type="button" onClick={this._next}>NEXT <i class="fa fa-angle-right" aria-hidden="true"></i></button>
 
                     <button onClick={this.handleSubmit} data-id="1" className={`btn btn-success saveexit class${this.state.currentStep}`}>SAVE & EXIT </button>
-                    <button hidden={this.state.currentStep == 10 ? false : true} onClick={this.handleSubmit} data-id="2" className={`btn btn-success submitexit class${this.state.currentStep}`}>SUBMIT</button>
+                    <button hidden={this.state.currentStep == 11 ? false : true} onClick={this.handleSubmit} data-id="2" className={`btn btn-success submitexit class${this.state.currentStep}`}>SUBMIT</button>
                 </div>
             )
         }
@@ -3012,7 +3014,6 @@ class Profile extends Component {
 
 
     updateMevalidationCheck() {
-        // console.log('222222222');
         let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
@@ -3143,7 +3144,7 @@ class Profile extends Component {
         }
 
         if (this.state.banking || this.state.brokerage || this.state.retirementAccount || this.state.rothAccount || this.state.otherTypes || this.state.otherApproxValue) {
-            let banking = 0, brokerage = 0, retirementAccount = 0, rothAccount= 0, otherTypes= 0,otherApproxValue = 0;
+            let banking = 0, brokerage = 0, retirementAccount = 0, rothAccount = 0, otherTypes = 0, otherApproxValue = 0;
             if (this.state.banking) {
                 banking = parseInt(this.state.banking.replace(/,/g, ""));
             } else {
@@ -3162,16 +3163,16 @@ class Profile extends Component {
                 retirementAccount = 0;
             }
 
-            if(this.state.rothAccount){
-                rothAccount = parseInt(this.state.rothAccount.replace(/,/g,""));
-            }else{
+            if (this.state.rothAccount) {
+                rothAccount = parseInt(this.state.rothAccount.replace(/,/g, ""));
+            } else {
                 rothAccount = 0;
             }
-        if(this.state.otherTypes){
-            otherTypes = parseInt(this.state.otherTypes.replace(/,/g,""))
-        }else{
-            otherTypes = 0;
-        }
+            if (this.state.otherTypes) {
+                otherTypes = parseInt(this.state.otherTypes.replace(/,/g, ""))
+            } else {
+                otherTypes = 0;
+            }
 
             if (this.state.otherApproxValue) {
                 otherApproxValue = parseInt(this.state.otherApproxValue.replace(/,/g, ""))
@@ -3359,12 +3360,13 @@ class Profile extends Component {
                                                                 <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="2" className={this.state.currentStep == 2 ? 'active' : ''}>Contact <i class={this.state.Errorindicator.includes(2) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
                                                                 <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="3" className={this.state.currentStep == 3 ? 'active' : ''}>Goals <i class={this.state.Errorindicator.includes(3) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
                                                                 <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="4" className={this.state.currentStep == 4 ? 'active' : ''}>Personal <i class={this.state.Errorindicator.includes(4) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
-                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="5" className={this.state.currentStep == 5 ? 'active' : ''}>ASSETS <i class={this.state.Errorindicator.includes(5) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
-                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="6" className={this.state.currentStep == 6 ? 'active' : ''}>BUDGET <i class={this.state.Errorindicator.includes(6) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
-                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="7" className={this.state.currentStep == 7 ? 'active' : ''}>INSURANCE <i class={this.state.Errorindicator.includes(7) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
-                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="8" className={this.state.currentStep == 8 ? 'active' : ''}>INVESTING <i class={this.state.Errorindicator.includes(8) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
-                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="9" className={this.state.currentStep == 9 ? 'active' : ''}>RISK <i class={this.state.Errorindicator.includes(9) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
-                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="10" className={this.state.currentStep == 10 ? 'active' : ''}>OTHER </span> </li>
+                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="5" className={this.state.currentStep == 5 ? 'active' : ''}>LIVING <i class={this.state.Errorindicator.includes(5) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
+                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="6" className={this.state.currentStep == 6 ? 'active' : ''}>ASSETS <i class={this.state.Errorindicator.includes(6) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
+                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="7" className={this.state.currentStep == 7 ? 'active' : ''}>BUDGET <i class={this.state.Errorindicator.includes(7) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
+                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="8" className={this.state.currentStep == 8 ? 'active' : ''}>INSURANCE <i class={this.state.Errorindicator.includes(8) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
+                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="9" className={this.state.currentStep == 9 ? 'active' : ''}>INVESTING <i class={this.state.Errorindicator.includes(9) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
+                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="10" className={this.state.currentStep == 10 ? 'active' : ''}>RISK <i class={this.state.Errorindicator.includes(10) == true ? 'fa fa-times-circle indicator allwrong' : 'fa fa-check-circle indicator allright'}></i></span> </li>
+                                                                <li>  <span onClick={this.sideButtonFuc.bind(this)} data-id="11" className={this.state.currentStep == 11 ? 'active' : ''}>OTHER </span> </li>
                                                             </ul>
                                                         </div>
 
@@ -3455,6 +3457,21 @@ class Profile extends Component {
                                                                     homeBox={this.state.homeBox}
                                                                     iWeRent={this.state.iWeRent}
                                                                     monthlyRent={this.state.monthlyRent}
+                                                                    canSubmit={this.state.canSubmit}
+
+                                                                    ChomeBox={this.state.ChomeBox}
+                                                                    CiWeRent={this.state.CiWeRent}
+
+                                                                    EhomeValue={this.state.EhomeValue}
+                                                                    EMortgage={this.state.EMortgage}
+                                                                    EhomeBox={this.state.EhomeBox}
+                                                                    EiWeRent={this.state.EiWeRent}
+                                                                    EmonthlyRent={this.state.EmonthlyRent}
+                                                            />
+
+                                                                <Step6
+                                                                    currentStep={this.state.currentStep}
+                                                                    handleChange={this.handleChange}
                                                                     homeBanking={this.state.homeBanking}
                                                                     homeBrokerage={this.state.homeBrokerage}
                                                                     homeRetirementAccount={this.state.homeRetirementAccount}
@@ -3475,8 +3492,7 @@ class Profile extends Component {
                                                                     others={this.state.others}
                                                                     canSubmit={this.state.canSubmit}
 
-                                                                    ChomeBox={this.state.ChomeBox}
-                                                                    CiWeRent={this.state.CiWeRent}
+                                                                  
                                                                     ChomeBanking={this.state.ChomeBanking}
                                                                     ChomeBrokerage={this.state.ChomeBrokerage}
                                                                     ChomeRetirementAccount={this.state.ChomeRetirementAccount}
@@ -3485,11 +3501,7 @@ class Profile extends Component {
                                                                     ChomeSS={this.state.ChomeSS}
                                                                     ChomePension={this.state.ChomePension}
 
-                                                                    EhomeValue={this.state.EhomeValue}
-                                                                    EMortgage={this.state.EMortgage}
-                                                                    EhomeBox={this.state.EhomeBox}
-                                                                    EiWeRent={this.state.EiWeRent}
-                                                                    EmonthlyRent={this.state.EmonthlyRent}
+                                                                 
                                                                     EhomeBanking={this.state.EhomeBanking}
                                                                     EhomeBrokerage={this.state.EhomeBrokerage}
                                                                     EhomeRetirementAccount={this.state.EhomeRetirementAccount}
@@ -3509,7 +3521,7 @@ class Profile extends Component {
 
                                                                 />
 
-                                                                <Step6
+                                                                <Step7
                                                                     currentStep={this.state.currentStep}
                                                                     handleChange={this.handleChange}
                                                                     essential={this.state.essential}
@@ -3524,7 +3536,7 @@ class Profile extends Component {
                                                                     canSubmit={this.state.canSubmit}
                                                                 />
 
-                                                                <Step7
+                                                                <Step8
                                                                     currentStep={this.state.currentStep}
                                                                     handleChange={this.handleChange}
                                                                     noInsurance={this.state.noInsurance}
@@ -3557,7 +3569,7 @@ class Profile extends Component {
 
                                                                 />
 
-                                                                <Step8
+                                                                <Step9
                                                                     currentStep={this.state.currentStep}
                                                                     handleChange={this.handleChange}
                                                                     analyticalInExperience={this.state.analyticalInExperience}
@@ -3593,7 +3605,7 @@ class Profile extends Component {
                                                                 />
 
 
-                                                                <Step9
+                                                                <Step10
                                                                     currentStep={this.state.currentStep}
                                                                     handleChange={this.handleChange}
                                                                     riskAggressive={this.state.riskAggressive}
@@ -3636,7 +3648,7 @@ class Profile extends Component {
 
                                                                 />
 
-                                                                <Step10
+                                                                <Step11
                                                                     currentStep={this.state.currentStep}
                                                                     handleChange={this.handleChange}
                                                                     aaii={this.state.aaii}
@@ -3648,7 +3660,7 @@ class Profile extends Component {
                                                                     otherOthersContent={this.state.otherOthersContent}
                                                                     whatAttracted={this.state.whatAttracted}
                                                                     improveQuestionnaire={this.state.improveQuestionnaire}
-
+                                                  
                                                                     EwhatAttracted={this.state.EwhatAttracted}
                                                                     EimproveQuestionnaire={this.state.EimproveQuestionnaire}
                                                                     Eaaii={this.state.Eaaii}
@@ -3674,6 +3686,7 @@ class Profile extends Component {
                                                                     {this.previousButton}
                                                                     {this.nextButton}
                                                                 </div>
+
                                                                 <input type="hidden" ref="id" className="form-control" name="id" value={this.state.fields._id} />
                                                                 <input type="hidden" ref="loginuser" className="form-control" name="loginuser" value={this.state.fields.username} />
 
@@ -4135,24 +4148,19 @@ class Step4 extends React.Component {
         )
     }
 }
-
 class Step5 extends React.Component {
-
     render() {
         if (this.props.currentStep !== 5) {
             return null
         }
-
         const formatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
             minimumFractionDigits: 0
         });
-
         return (
             <React.Fragment>
-                <h5>ASSETS DETAILS</h5>
-
+                <h5>LIVING</h5>
                 <div className="col-md-12 col-sm-12">
                     <div className="row">
                         <div className="col-md-12 col-sm-12">
@@ -4251,6 +4259,41 @@ class Step5 extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                </div>
+            </React.Fragment>
+        )
+    }
+}
+
+class Step6 extends React.Component {
+
+    render() {
+        if (this.props.currentStep !== 6) {
+            return null
+        }
+
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0
+        });
+
+        return (
+            <React.Fragment>
+                <h5>ASSETS DETAILS</h5>
+
+                <div className="col-md-12 col-sm-12">
+                    <div className="row">
+                        <div className="col-md-12 col-sm-12">
+                            <h6>Types of assets</h6>
+
+                        </div>
+
+                    </div>
+
+
+             
 
 
                     <div className="row">
@@ -4516,12 +4559,12 @@ class Step5 extends React.Component {
 
 
 
-class Step6 extends React.Component {
+class Step7 extends React.Component {
 
 
 
     render() {
-        if (this.props.currentStep !== 6) {
+        if (this.props.currentStep !== 7) {
             return null
         }
 
@@ -4571,8 +4614,8 @@ class Step6 extends React.Component {
 
                     <div className="col-md-12 col-sm-12">
                         <div className="form-group">
-                             <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>Approx. total: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                             {this.props.AssetsApproxBudget ? formatter.format(this.props.AssetsApproxBudget) : '$0,000'}
+                            <label htmlFor="name" style={{ fontWeight: 700, fontSize: "18px" }}>Approx. total: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            {this.props.AssetsApproxBudget ? formatter.format(this.props.AssetsApproxBudget) : '$0,000'}
                             {/* <NumberFormat
                                 className={this.props.AssetsApproxBudget ? this.props.AssetsApproxBudget : 'form-control'}
                                 id="AssetsApproxBudget"
@@ -4640,9 +4683,9 @@ class Step6 extends React.Component {
     }
 }
 
-class Step7 extends React.Component {
+class Step8 extends React.Component {
     render() {
-        if (this.props.currentStep !== 7) {
+        if (this.props.currentStep !== 8) {
             return null
         }
         return (
@@ -4803,7 +4846,7 @@ class Step7 extends React.Component {
     }
 }
 
-class Step8 extends React.Component {
+class Step9 extends React.Component {
 
     createInExp = () => {
         let InExp = []
@@ -4814,7 +4857,7 @@ class Step8 extends React.Component {
     }
 
     render() {
-        if (this.props.currentStep !== 8) {
+        if (this.props.currentStep !== 9) {
             return null
         }
         return (
@@ -4950,7 +4993,7 @@ class Step8 extends React.Component {
 }
 
 
-class Step9 extends React.Component {
+class Step10 extends React.Component {
 
     createInExp = () => {
         let InExp = []
@@ -4961,7 +5004,7 @@ class Step9 extends React.Component {
     }
 
     render() {
-        if (this.props.currentStep !== 9) {
+        if (this.props.currentStep !== 10) {
             return null
         }
         return (
@@ -5133,9 +5176,9 @@ class Step9 extends React.Component {
 }
 
 
-class Step10 extends React.Component {
+class Step11 extends React.Component {
     render() {
-        if (this.props.currentStep !== 10) {
+        if (this.props.currentStep !== 11) {
             return null
         }
         return (

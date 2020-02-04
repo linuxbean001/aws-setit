@@ -36,10 +36,11 @@ export default class PasswordReset extends Component {
         // 'password': this.refs.password.value,
         'useremail': this.refs.useremail.value
       }
-      console.log('userinfovo', userInfoVo);
+     
 
       API.emailpasswordReset(userInfoVo)
         .then((result) => {
+          console.log('userinfovo', result);
           if (result.data.success) {
             this.setState({
               pshowAlert: true,
