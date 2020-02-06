@@ -20,6 +20,7 @@ class ResetPassword extends Component {
             errors: {},
             fields: {},
             pshowAlert: false,
+            msgModal: false,
             presetdata: []
         };
         this.passwordupdate = this.passwordupdate.bind(this);
@@ -30,7 +31,7 @@ class ResetPassword extends Component {
         const Userdata = {
             'useremail': this.state.useremail
         }
-        API.getpasswordlinkstatus(Userdata) 
+        API.getpasswordlinkstatus(Userdata)
             .then(res => {
                 console.log('frontres:', res.data);
                 if (res.data.data) {
@@ -79,7 +80,7 @@ class ResetPassword extends Component {
         this.setState({ errors: errors });
         return formIsValid;
     }
-    
+
     registerMehandleChange(field, e) {
         console.log(this.state);
         let errors = {};
@@ -99,16 +100,23 @@ class ResetPassword extends Component {
                 'useremail': this.state.useremail,
                 'token': this.props.match.params.token
             }
-            console.log('userInfoVo123',userInfoVo);
-            
+            console.log('userInfoVo123', userInfoVo);
+
             API.emailpasswordResetWithSendEmail(userInfoVo)
                 .then((result) => {
                     if (result.data.success) {
                         this.setState({
                             pshowAlert: true,
                             color: 'green',
-                            message: result.data.message
+                            message: result.data.message,
+                            msgModal: true
                         });
+                        setTimeout(() => {
+                            this.setState({
+                                msgModal: false
+                            })
+                            this.props.history.replace('/front/register');
+                        }, 2000)
                     } else {
                         this.setState({
                             pshowAlert: true,
@@ -129,7 +137,7 @@ class ResetPassword extends Component {
     }
 
     render() {
-        console.log('dataaaaa:', this.state.presetdata.data); 
+        console.log('dataaaaa:', this.state.presetdata.data);
         return (
             <div className="password-profile-section">
                 <section id="password-dashboard-main">
@@ -161,8 +169,8 @@ class ResetPassword extends Component {
                                 <div className="form-group">
                                     <input type="button" onClick={this.passwordupdate} className="light-btn button" value="RESET PASSWORD" style={{ background: '#7030a0', borderColor: '#7030a0' }} />
                                 </div>
-
                             </div>
+                            {this.state.msgModal ? <div className="msgclass"><p className="resetmsg">YOU HAVE SUCCESSFULLY RESET YOUR PASSWORD</p></div> : ''}
                             {/* {this.state.presetdata.data ? (<div className="col-lg-12 col-md-12 col-sm-12">
                                     <div style={{ width:'100%', marginLeft:'0px'}} className="dashboard-content"> 
                                        {this.state.presetdata.data.presetlink == '0' ? (<div className="row dashboard-content-inner"> 

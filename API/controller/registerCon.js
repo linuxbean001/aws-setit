@@ -72,7 +72,7 @@ exports.addRegisterTODb = async (req, res, next) => {
                          
                           <p style="margin:0;font-size:14px">Best regards,</p>
                           <p style="margin:0;font-size:16px"><em style="color:#9464B8">SET IT <span style="font-size:10px;">AND</span> LEAVE IT</em> Team</p><br><br/><br/>
-                          <a style="text-decoration:none;"  href="${creds.domain}/front"> <img class="logo" style="width:200px;height:auto" src="http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/static/media/logo1.8cbebd0f.png"  alt="My_Logo"></a>
+                          <a style="text-decoration:none;"  href="${creds.domain}/front"><img class="logo" style="width:200px;height:auto" src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da"  alt="My_Logo"></a>
                           <br><br/><br/><p style="margin:0;font-size:16px"><b>Phone:</b> <a href="tel:18669005050">1-866-900-5050</a> | <b>Email:</b> <a href="mailto:info@setitandleaveit.com">info@SetItandLeaveIt.com</a> | <b>Web:</b> <a href="www.setitandleaveit.com">www.SetItandLeaveIt.com</a></p>
                       </div>
                   `;
