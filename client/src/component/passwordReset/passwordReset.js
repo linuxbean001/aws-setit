@@ -9,6 +9,7 @@ export default class PasswordReset extends Component {
     this.state = {
       errors: {},
       fields: {},
+      passModal: false,
       pshowAlert: false,
       presetdata: []
     };
@@ -36,7 +37,8 @@ export default class PasswordReset extends Component {
         // 'password': this.refs.password.value,
         'useremail': this.refs.useremail.value
       }
-     
+      console.log('xxxx', userInfoVo);
+
 
       API.emailpasswordReset(userInfoVo)
         .then((result) => {
@@ -45,15 +47,23 @@ export default class PasswordReset extends Component {
             this.setState({
               pshowAlert: true,
               color: 'green',
-              message: result.data.message
+              message: result.data.message,
+              passModal: true
             });
-          } else {
+          }
+          else {
             this.setState({
               pshowAlert: true,
               color: '#b31313d6',
               message: result.data.message
             });
           }
+          setTimeout(() => {
+            this.setState({
+              passModal: false
+            })
+         
+          }, 2000)
         }).catch(err => {
           // console.log('xxx new:', err);
         })
@@ -66,15 +76,17 @@ export default class PasswordReset extends Component {
   }
   render() {
 
+
     return (
 
-      <div className="row dashboard-content-inner">
-        <div class="inner-page-banner-heading forgot">
+      <div className="row">
+        <div class="inner-page-banner-heading">
           <h2>FORGOT PASSWORD OR LOGIN?</h2>
         </div>
-        <h5>Forgot your login? <Link to="/front/contact">Please contact us.</Link></h5>
+        <div className="dashboard-content-inner">
+        <h5 className="dash">Forgot your login? <Link to="/front/contact">Please contact us.</Link></h5>
         <h5>Forgotten your password? Please enter your email below:</h5>
-      {/* <h5>Please enter your email below if you have forgotten your password.<Link to="/front/contact">Contact us</Link> if you have forgotten your login.</h5> */}
+        {/* <h5>Please enter your email below if you have forgotten your password.<Link to="/front/contact">Contact us</Link> if you have forgotten your login.</h5> */}
         <div className="col-lg-12 col-md-12 col-sm-12">
           <form className="row">
             <div className="col-md-6 col-sm-12">
@@ -87,10 +99,12 @@ export default class PasswordReset extends Component {
 
           </form>
         </div>
+      
         <div className="form-group">
           <input type="button" onClick={this.passwordupdate} className="light-btn button" value="SEND RESET LINK" style={{ background: '#7030a0', borderColor: '#7030a0' }} />
         </div>
-
+        {this.state.passModal ? <div className="msgclass1234"><p className="resetmsg123">WE EMAILED YOU A LINK TO RESET YOUR PASSWORD<br/>(CHECK YOUR SPAM FOLDER IF YOU DO NOT SEE IT)</p></div> : ''}
+        </div>
       </div>
 
 

@@ -2,13 +2,13 @@ import axios from 'axios';
 export default class AdminService {
 
     constructor() {
-        //this.domain = 'ec2-18-221-255-18.us-east-2.compute.amazonaws.com';
-        this.domain = 'http://localhost:3300';
+        this.domain = 'ec2-18-221-255-18.us-east-2.compute.amazonaws.com';
+        //this.domain = 'http://localhost:3300';
     }
 
     getUserAll(){
         console.log('adminService...xx..x');
-        return axios.get(this.domain+ '/sellandleave/userlist')
+        return axios.get( '/sellandleave/userlist')
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -18,7 +18,7 @@ export default class AdminService {
 
     getAllContactList(){
         console.log('adminContactService...xx..x');
-        return axios.get(this.domain+ '/sellandleave/userContactlist')
+        return axios.get( '/sellandleave/userContactlist')
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -28,7 +28,7 @@ export default class AdminService {
 
     getAllActivityLogList(){
         console.log('adminuserlogService...xx..x');
-        return axios.get(this.domain+ '/sellandleave/userActivityLog')
+        return axios.get( '/sellandleave/userActivityLog')
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -38,7 +38,7 @@ export default class AdminService {
 
     AdminEditUserInfo(userInfoVo){
         console.log('editAdminService:',userInfoVo);
-        return axios.post(this.domain+ '/sellandleave/userEditInfo', userInfoVo)
+        return axios.post( '/sellandleave/userEditInfo', userInfoVo)
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -48,7 +48,7 @@ export default class AdminService {
 
     AdmindeleteUserById(id) {
         console.log('userSid:',id);
-        return axios.delete(this.domain+ '/sellandleave/delUser/'+id)
+        return axios.delete( '/sellandleave/delUser/'+id)
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -58,7 +58,7 @@ export default class AdminService {
 
     AdmindeleteUserContactById(id) {
         console.log('userSid:',id);
-        return axios.delete(this.domain+ '/sellandleave/delUserContact/'+id)
+        return axios.delete( '/sellandleave/delUserContact/'+id)
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -68,7 +68,7 @@ export default class AdminService {
 
     AdminDeleteActivityLogById(id) {
         console.log('ActivityLogId:',id);
-        return axios.delete(this.domain+ '/sellandleave/delActivityLog/'+id)
+        return axios.delete( '/sellandleave/delActivityLog/'+id)
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -80,7 +80,7 @@ export default class AdminService {
          console.log('sliderInfoVo:',sliderInfoVo);
         //return axios.post('/sellandleave/addSlider', sliderInfoVo) 
 
-        return axios.post(this.domain+ '/sellandleave/addSlider', sliderInfoVo, {
+        return axios.post( '/sellandleave/addSlider', sliderInfoVo, {
             headers: {
                 'Content-Type':'multipart/form-data'
             }
@@ -95,7 +95,7 @@ export default class AdminService {
 
     getAllSliderList(){
         console.log('adminSliderService...xx..x');
-        return axios.get(this.domain+ '/sellandleave/sliderList')
+        return axios.get( '/sellandleave/sliderList')
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -105,7 +105,7 @@ export default class AdminService {
 
     AdmindeleteSliderById(id) {
         console.log('sliderID:',id);
-        return axios.delete(this.domain+ '/sellandleave/delSlider/'+id)
+        return axios.delete( '/sellandleave/delSlider/'+id)
             .then((result) => {
                 return (result);
             }).catch(err => {
@@ -115,7 +115,7 @@ export default class AdminService {
 
     AdminAddEIC(eicInfoVo){
         console.log('sliderInfoVo:',eicInfoVo);
-       return axios.post(this.domain+ '/sellandleave/addEIC', eicInfoVo,
+       return axios.post( '/sellandleave/addEIC', eicInfoVo,
        {
         headers: {
             'Content-Type':'multipart/form-data'
@@ -132,7 +132,7 @@ export default class AdminService {
 
    getAllEICList(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/Eiclist')
+    return axios.get( '/sellandleave/Eiclist')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -142,7 +142,7 @@ export default class AdminService {
 
   AdmindeleteEICById(id) {
     console.log('EICID:',id);
-    return axios.delete(this.domain+ '/sellandleave/delEIC/'+id)
+    return axios.delete( '/sellandleave/delEIC/'+id)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -152,7 +152,7 @@ export default class AdminService {
 
   AdminEditEICInfo(EICInfoVo){
     console.log('editAdminServiceEIC:',EICInfoVo);
-    return axios.post(this.domain+ '/sellandleave/EICEditInfo', EICInfoVo,{
+    return axios.post( '/sellandleave/EICEditInfo', EICInfoVo,{
         headers: {
             'Content-Type':'multipart/form-data'
         }
@@ -166,7 +166,7 @@ export default class AdminService {
  
  AddWhocanuseit(EICInfoVo){
     console.log('whoeditAdminServiceEIC:',EICInfoVo);
-    return axios.post(this.domain+ '/sellandleave/WhocanUseitInfo', EICInfoVo,{
+    return axios.post( '/sellandleave/WhocanUseitInfo', EICInfoVo,{
         headers: {
             'Content-Type':'multipart/form-data'
         }
@@ -179,7 +179,7 @@ export default class AdminService {
 
  getWhoCanUseIt(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/Getwhocanuseit')
+    return axios.get( '/sellandleave/Getwhocanuseit')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -191,7 +191,7 @@ export default class AdminService {
 
   AddPeaceofmind(EICInfoVo){
     console.log('whoeditAdminServiceEIC:',EICInfoVo);
-    return axios.post(this.domain+ '/sellandleave/PeaceofmindInfo', EICInfoVo,{
+    return axios.post( '/sellandleave/PeaceofmindInfo', EICInfoVo,{
         headers: {
             'Content-Type':'multipart/form-data'
         }
@@ -204,7 +204,7 @@ export default class AdminService {
 
  getPeaceOfMind(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/getpeaceofmind')
+    return axios.get( '/sellandleave/getpeaceofmind')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -214,7 +214,7 @@ export default class AdminService {
 
   AddEasyToUse(EICInfoVo){
     console.log('whoeditAdminServiceEIC:',EICInfoVo);
-    return axios.post(this.domain+ '/sellandleave/EasytouseInfo', EICInfoVo,{
+    return axios.post( '/sellandleave/EasytouseInfo', EICInfoVo,{
         headers: {
             'Content-Type':'multipart/form-data'
         }
@@ -227,7 +227,7 @@ export default class AdminService {
 
  getEasytouse(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/geteasytouse')
+    return axios.get( '/sellandleave/geteasytouse')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -237,7 +237,7 @@ export default class AdminService {
 
   AdminAddFAQ(FAQInfoVo){
     console.log('sliderInfoVo:',FAQInfoVo);
-   return axios.post(this.domain+ '/sellandleave/addFAQ', FAQInfoVo) 
+   return axios.post( '/sellandleave/addFAQ', FAQInfoVo) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);
@@ -249,7 +249,7 @@ export default class AdminService {
 
 getAllFAQList(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/FAQlist')
+    return axios.get( '/sellandleave/FAQlist')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -259,7 +259,7 @@ getAllFAQList(){
 
   AdmindeleteFAQById(id) {
     console.log('EICID:',id);
-    return axios.delete(this.domain+ '/sellandleave/delFAQ/'+id)
+    return axios.delete( '/sellandleave/delFAQ/'+id)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -269,7 +269,7 @@ getAllFAQList(){
 
   AdminEditFAQInfo(FAQInfoVo){
     console.log('editAdminServiceEIC:',FAQInfoVo);
-    return axios.post(this.domain+ '/sellandleave/FAQEditInfo', FAQInfoVo).then((result) => {
+    return axios.post( '/sellandleave/FAQEditInfo', FAQInfoVo).then((result) => {
             return (result);
         }).catch(err => {
             console.log('xxxxxxx xxxxxxxxxxx err is ', err);
@@ -278,7 +278,7 @@ getAllFAQList(){
 
  AddFAQheader(faqHeaderInfoVo){
     console.log('whoeditAdminServiceEIC:',faqHeaderInfoVo);
-    return axios.post(this.domain+ '/sellandleave/faqheaderInfo', faqHeaderInfoVo,{
+    return axios.post( '/sellandleave/faqheaderInfo', faqHeaderInfoVo,{
         headers: {
             'Content-Type':'multipart/form-data'
         }
@@ -291,7 +291,7 @@ getAllFAQList(){
 
  getFAQheader(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/Getfaqheader')
+    return axios.get( '/sellandleave/Getfaqheader')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -304,7 +304,7 @@ getAllFAQList(){
 
   AddServiceheader(serviceHeaderInfoVo){
     console.log('whoeditAdminServiceEIC:',serviceHeaderInfoVo);
-    return axios.post(this.domain+ '/sellandleave/serviceheaderInfo', serviceHeaderInfoVo,{
+    return axios.post( '/sellandleave/serviceheaderInfo', serviceHeaderInfoVo,{
         headers: {
             'Content-Type':'multipart/form-data'
         }
@@ -317,7 +317,7 @@ getAllFAQList(){
 
  getServiceheader(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/Getserviceheader')
+    return axios.get( '/sellandleave/Getserviceheader')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -329,7 +329,7 @@ getAllFAQList(){
 
 AddServicesolution(serviceSolutionInfoVo){
     console.log('whoeditAdminServiceEIC:',serviceSolutionInfoVo);
-    return axios.post(this.domain+ '/sellandleave/servicesolutionInfo', serviceSolutionInfoVo)
+    return axios.post( '/sellandleave/servicesolutionInfo', serviceSolutionInfoVo)
     .then((result) => {
             return (result);
         }).catch(err => {
@@ -339,7 +339,7 @@ AddServicesolution(serviceSolutionInfoVo){
 
 getServicesolution(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/Getservicesolution')
+    return axios.get( '/sellandleave/Getservicesolution')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -350,7 +350,7 @@ getServicesolution(){
 
 AdminAddServices(ServicesInfoVo){
     console.log('sliderInfoVo:',ServicesInfoVo);
-   return axios.post(this.domain+ '/sellandleave/addServices', ServicesInfoVo) 
+   return axios.post( '/sellandleave/addServices', ServicesInfoVo) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);
@@ -362,7 +362,7 @@ AdminAddServices(ServicesInfoVo){
 
 getAllServiceList(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/Servicelist')
+    return axios.get( '/sellandleave/Servicelist')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -372,7 +372,7 @@ getAllServiceList(){
 
   AdmindeleteServiceById(id) {
     console.log('EICID:',id);
-    return axios.delete(this.domain+ '/sellandleave/delService/'+id)
+    return axios.delete( '/sellandleave/delService/'+id)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -382,7 +382,7 @@ getAllServiceList(){
 
   AdminEditServiceInfo(ServiceInfoVo){
     console.log('editAdminServiceEIC:',ServiceInfoVo);
-    return axios.post(this.domain+ '/sellandleave/ServiceEditInfo', ServiceInfoVo).then((result) => {
+    return axios.post( '/sellandleave/ServiceEditInfo', ServiceInfoVo).then((result) => {
             return (result);
         }).catch(err => {
             console.log('xxxxxxx xxxxxxxxxxx err is ', err);
@@ -393,7 +393,7 @@ getAllServiceList(){
  
  AdminAddPrice(PriceInfoVo){
     console.log('sliderInfoVo:',PriceInfoVo);
-   return axios.post(this.domain+ '/sellandleave/addpricing', PriceInfoVo) 
+   return axios.post( '/sellandleave/addpricing', PriceInfoVo) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);
@@ -405,7 +405,7 @@ getAllServiceList(){
 
 getAllPriceList(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/pricelist')
+    return axios.get( '/sellandleave/pricelist')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -415,7 +415,7 @@ getAllPriceList(){
 
   AdmindeletePriceById(id) {
     console.log('EICID:',id);
-    return axios.delete(this.domain+ '/sellandleave/delPrice/'+id)
+    return axios.delete( '/sellandleave/delPrice/'+id)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -425,7 +425,7 @@ getAllPriceList(){
 
   AdminEditPriceInfo(PriceInfoVo){
     console.log('editAdminServiceEIC:',PriceInfoVo);
-    return axios.post(this.domain+ '/sellandleave/PriceEditInfo', PriceInfoVo).then((result) => {
+    return axios.post( '/sellandleave/PriceEditInfo', PriceInfoVo).then((result) => {
             return (result);
         }).catch(err => {
             console.log('xxxxxxx xxxxxxxxxxx err is ', err);
@@ -435,7 +435,7 @@ getAllPriceList(){
 
  AdminSendresetpassword(userInfoVo) {
     console.log('updateuser:',userInfoVo );
-    return axios.post(this.domain+ '/sellandleave/emailresetpassword', userInfoVo) 
+    return axios.post( '/sellandleave/emailresetpassword', userInfoVo) 
      .then((result) => {
          return (result);
      }).catch(err => {
@@ -446,7 +446,7 @@ getAllPriceList(){
 
 AdminToolsStatus(toolInfoVo) {
     console.log('toolstatus:',toolInfoVo );
-    return axios.post(this.domain+ '/sellandleave/toolenablestatus', toolInfoVo) 
+    return axios.post( '/sellandleave/toolenablestatus', toolInfoVo) 
      .then((result) => {
       
          return (result);
@@ -459,7 +459,7 @@ AdminToolsStatus(toolInfoVo) {
 
  //*******************************vks block*/
  getTraditionalOverview(){
-    return axios.get(this.domain+ '/sellandleave/traditionalOverview')
+    return axios.get( '/sellandleave/traditionalOverview')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -469,7 +469,7 @@ AdminToolsStatus(toolInfoVo) {
 
 TraditionalOverviewAdd(data){
     console.log("data check : ",data)
-    return axios.post(this.domain+ '/sellandleave/traditionalOverviewAdd/',data)
+    return axios.post( '/sellandleave/traditionalOverviewAdd/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -479,7 +479,7 @@ TraditionalOverviewAdd(data){
 
 TraditionalOverviewUpdate(data){
     console.log('Traditional Update: ',data);
-    return axios.post(this.domain+ '/sellandleave/traditionalOverviewUpdate/',data)
+    return axios.post( '/sellandleave/traditionalOverviewUpdate/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -489,7 +489,7 @@ TraditionalOverviewUpdate(data){
 
 
 getTraditionalTab(){
-    return axios.get(this.domain+ '/sellandleave/traditionalTab')
+    return axios.get( '/sellandleave/traditionalTab')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -499,7 +499,7 @@ getTraditionalTab(){
 
 TraditionalTabAdd(data){
     console.log("data check : ",data)
-    return axios.post(this.domain+ '/sellandleave/traditionalTabAdd/',data)
+    return axios.post( '/sellandleave/traditionalTabAdd/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -509,7 +509,7 @@ TraditionalTabAdd(data){
 
 TraditionalTabUpdate(data){
     console.log('Traditional Update: ',data);
-    return axios.post(this.domain+ '/sellandleave/traditionalTabUpdate/',data)
+    return axios.post( '/sellandleave/traditionalTabUpdate/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -519,7 +519,7 @@ TraditionalTabUpdate(data){
 
 
 GetSIALI(){
-    return axios.get(this.domain+ '/sellandleave/getSIALI')
+    return axios.get( '/sellandleave/getSIALI')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -529,7 +529,7 @@ GetSIALI(){
 
 AddSIALIT(data){
     console.log("data check : ",data)
-    return axios.post(this.domain+ '/sellandleave/addSIALI/',data)
+    return axios.post( '/sellandleave/addSIALI/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -539,7 +539,7 @@ AddSIALIT(data){
 
 UpdateSIALI(data){
     console.log('Traditional Update: ',data);
-    return axios.post(this.domain+ '/sellandleave/updateSIALI/',data)
+    return axios.post( '/sellandleave/updateSIALI/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -548,7 +548,7 @@ UpdateSIALI(data){
 }
 
 GetVideos(){
-    return axios.get(this.domain+ '/sellandleave/getVideos')
+    return axios.get( '/sellandleave/getVideos')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -557,7 +557,7 @@ GetVideos(){
 }
 
 AddVideos(data){
-    return axios.post(this.domain+ '/sellandleave/addVideos/',data)
+    return axios.post( '/sellandleave/addVideos/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -566,7 +566,7 @@ AddVideos(data){
 }
 
 UpdateVideos(data){
-    return axios.post(this.domain+ '/sellandleave/updateVideos/',data)
+    return axios.post( '/sellandleave/updateVideos/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -575,7 +575,7 @@ UpdateVideos(data){
 }
 
 GetAbout(){
-    return axios.get(this.domain+ '/sellandleave/getAbout')
+    return axios.get( '/sellandleave/getAbout')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -584,7 +584,7 @@ GetAbout(){
 }
 
 AddAbout(data){
-    return axios.post(this.domain+ '/sellandleave/addAbout/',data)
+    return axios.post( '/sellandleave/addAbout/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -593,7 +593,7 @@ AddAbout(data){
 }
 
 UpdateAbout(data){
-    return axios.post(this.domain+ '/sellandleave/updateAbout/',data)
+    return axios.post( '/sellandleave/updateAbout/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -604,7 +604,7 @@ UpdateAbout(data){
 /** research service */
 
 GetResearchOverview(){
-    return axios.get(this.domain+ '/sellandleave/getResearchOverview')
+    return axios.get( '/sellandleave/getResearchOverview')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -613,7 +613,7 @@ GetResearchOverview(){
 }
 
 GetResearch(){
-    return axios.get(this.domain+ '/sellandleave/getResearch')
+    return axios.get( '/sellandleave/getResearch')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -622,7 +622,7 @@ GetResearch(){
 }
 
 GetResource(){
-    return axios.get(this.domain+ '/sellandleave/getResource')
+    return axios.get( '/sellandleave/getResource')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -631,7 +631,7 @@ GetResource(){
 }
 
 AddResearch(data){
-    return axios.post(this.domain+ '/sellandleave/addResearch/',data)
+    return axios.post( '/sellandleave/addResearch/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -640,7 +640,7 @@ AddResearch(data){
 }
 
 UpdateResearch(data){
-    return axios.post(this.domain+ '/sellandleave/updateResearch/',data)
+    return axios.post( '/sellandleave/updateResearch/',data)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -652,7 +652,7 @@ UpdateResearch(data){
 
 AdminAddResource(resourceInfoVo){
     console.log('ResourceInfoVo:',resourceInfoVo);
-   return axios.post(this.domain+ '/sellandleave/addNewResource', resourceInfoVo,
+   return axios.post( '/sellandleave/addNewResource', resourceInfoVo,
    {
     headers: {
         'Content-Type':'multipart/form-data'
@@ -669,7 +669,7 @@ AdminAddResource(resourceInfoVo){
 
 getAllResourceList(){
 console.log('admineicService...xx..x');
-return axios.get(this.domain+ '/sellandleave/resourcelist')
+return axios.get( '/sellandleave/resourcelist')
     .then((result) => {
         return (result);
     }).catch(err => {
@@ -679,7 +679,7 @@ return axios.get(this.domain+ '/sellandleave/resourcelist')
 
 AdmindeleteResourceById(id) {
 console.log('ResourceID:',id);
-return axios.delete(this.domain+ '/sellandleave/delResource/'+id)
+return axios.delete( '/sellandleave/delResource/'+id)
     .then((result) => {
         return (result);
     }).catch(err => {
@@ -689,7 +689,7 @@ return axios.delete(this.domain+ '/sellandleave/delResource/'+id)
 
 AdminEditResourceInfo(resourceInfoVo){
 console.log('editAdminServiceResource:',resourceInfoVo);
-return axios.post(this.domain+ '/sellandleave/resourceEditInfo', resourceInfoVo,{
+return axios.post( '/sellandleave/resourceEditInfo', resourceInfoVo,{
     headers: {
         'Content-Type':'multipart/form-data'
     }
@@ -704,7 +704,7 @@ return axios.post(this.domain+ '/sellandleave/resourceEditInfo', resourceInfoVo,
 
 AdminAddResearch(researchInfoVo){
     console.log('ResearchInfoVo:',researchInfoVo);
-   return axios.post(this.domain+ '/sellandleave/addNewResearch', researchInfoVo , {
+   return axios.post( '/sellandleave/addNewResearch', researchInfoVo , {
     headers: {
         'Content-Type':'multipart/form-data'
     }
@@ -720,7 +720,7 @@ AdminAddResearch(researchInfoVo){
 
 getAllResearchList(){
 console.log('admineicService...xx..x');
-return axios.get(this.domain+ '/sellandleave/researchlist')
+return axios.get( '/sellandleave/researchlist')
     .then((result) => {
         return (result);
     }).catch(err => {
@@ -730,7 +730,7 @@ return axios.get(this.domain+ '/sellandleave/researchlist')
 
 AdmindeleteResearchById(id) {
 console.log('ResearchID:',id);
-return axios.delete(this.domain+ '/sellandleave/delResearch/'+id)
+return axios.delete( '/sellandleave/delResearch/'+id)
     .then((result) => {
         return (result);
     }).catch(err => {
@@ -740,7 +740,7 @@ return axios.delete(this.domain+ '/sellandleave/delResearch/'+id)
 
 AdminEditResearchInfo(researchInfoVo){
 console.log('editAdminServiceResearch:',researchInfoVo);
-return axios.post(this.domain+ '/sellandleave/researchEditInfo', researchInfoVo, {
+return axios.post( '/sellandleave/researchEditInfo', researchInfoVo, {
     headers: {
         'Content-Type':'multipart/form-data'
     }
@@ -761,7 +761,7 @@ return axios.post(this.domain+ '/sellandleave/researchEditInfo', researchInfoVo,
 
 AdminAddAccordian(AccordianInfoVo){
     console.log('sliderInfoVo:',AccordianInfoVo);
-   return axios.post(this.domain+ '/sellandleave/addAccordian', AccordianInfoVo) 
+   return axios.post( '/sellandleave/addAccordian', AccordianInfoVo) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);
@@ -773,7 +773,7 @@ AdminAddAccordian(AccordianInfoVo){
 
 getAllAccordianList(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/Accordianlist')
+    return axios.get( '/sellandleave/Accordianlist')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -782,7 +782,7 @@ getAllAccordianList(){
   }
 
 AdmindeleteAccordianById(id) {
-    return axios.delete(this.domain+ '/sellandleave/delAccordian/'+id)
+    return axios.delete( '/sellandleave/delAccordian/'+id)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -792,7 +792,7 @@ AdmindeleteAccordianById(id) {
 
 AdminEditAccordianInfo(AccordianInfoVo){
     console.log('editAdminServiceEIC:',AccordianInfoVo);
-    return axios.post(this.domain+ '/sellandleave/AccordianEditInfo', AccordianInfoVo).then((result) => {
+    return axios.post( '/sellandleave/AccordianEditInfo', AccordianInfoVo).then((result) => {
             return (result);
         }).catch(err => {
             console.log('xxxxxxx xxxxxxxxxxx err is ', err);
@@ -803,7 +803,7 @@ AdminEditAccordianInfo(AccordianInfoVo){
 
 AdminAddTableRow(TableRowInfoVo){
     console.log('sliderInfoVo:',TableRowInfoVo);
-   return axios.post(this.domain+ '/sellandleave/addTableRow', TableRowInfoVo) 
+   return axios.post( '/sellandleave/addTableRow', TableRowInfoVo) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);
@@ -815,7 +815,7 @@ AdminAddTableRow(TableRowInfoVo){
 
 getAllTableRowList(){
     console.log('admineicService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/TableRowlist')
+    return axios.get( '/sellandleave/TableRowlist')
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -824,7 +824,7 @@ getAllTableRowList(){
   }
 
 AdmindeleteTableRowById(id) {
-    return axios.delete(this.domain+ '/sellandleave/delTableRow/'+id)
+    return axios.delete( '/sellandleave/delTableRow/'+id)
         .then((result) => {
             return (result);
         }).catch(err => {
@@ -834,7 +834,7 @@ AdmindeleteTableRowById(id) {
 
 AdminEditTableRowInfo(TableRowInfoVo){
     console.log('editAdminServiceEIC:',TableRowInfoVo);
-    return axios.post(this.domain+ '/sellandleave/TableRowEditInfo', TableRowInfoVo).then((result) => {
+    return axios.post( '/sellandleave/TableRowEditInfo', TableRowInfoVo).then((result) => {
             return (result);
         }).catch(err => {
             console.log('xxxxxxx xxxxxxxxxxx err is ', err);
@@ -845,7 +845,7 @@ AdminEditTableRowInfo(TableRowInfoVo){
 
 getQuestionnaireAll(){
     console.log('adminService...xx..x');
-    return axios.get(this.domain+ '/sellandleave/questionnairelist')
+    return axios.get( '/sellandleave/questionnairelist')
         .then((result) => {
             console.log('resut:',result);
             return (result);
@@ -858,7 +858,7 @@ getQuestionnaireAll(){
 
 AdminpdfPrintSubmit(pdfInfoVo){
     console.log('pdfInfoVo:',pdfInfoVo);
-   return axios.post(this.domain+ '/sellandleave/convertpdf', pdfInfoVo) 
+   return axios.post( '/sellandleave/convertpdf', pdfInfoVo) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);
@@ -871,7 +871,7 @@ AdminpdfPrintSubmit(pdfInfoVo){
 
 AdminpdfPrintDelete(pdfInfoVo){
     console.log('pdfInfoVo:',pdfInfoVo);
-   return axios.post(this.domain+ '/sellandleave/convertpdfdelete', pdfInfoVo) 
+   return axios.post( '/sellandleave/convertpdfdelete', pdfInfoVo) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);
@@ -883,7 +883,7 @@ AdminpdfPrintDelete(pdfInfoVo){
 
 UserQueDelete(queId){
     console.log('pdfInfoVo:',queId);
-   return axios.post(this.domain+ '/sellandleave/userquedelete/' + queId) 
+   return axios.post( '/sellandleave/userquedelete/' + queId) 
    .then((result) => {
        console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
        return (result);

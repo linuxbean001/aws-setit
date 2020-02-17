@@ -3631,7 +3631,7 @@ li a.is-active .aj_fa {
 
 .dashboard-content-inner h5 {
   font-weight: 600;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 0px solid #ddd;
   margin: 15px;
   padding-bottom: 10px;
   width: 100%;
@@ -4737,16 +4737,52 @@ hr.hrtag {
 }
 
 /** my -------------------------- css **/
-
+/* .msgclass123 {
+  background-color: green;
+} */
+/* .msgclass1234 {
+  background-color: green;
+  width: max-content;
+  height: 15%;
+  padding: 1%;
+  margin-left: 20px;
+} */
+.dashboard-content-inner p {
+  font-size: 18px;
+  line-height: 24px;
+  color: black;
+}
+.newpass {
+  background-color: red;
+  color: white;
+}
+.msgclass1234 {
+  background-color: #2f942f;
+  width: max-content;
+  padding: 15px;
+  margin-left: 0px;
+  padding-bottom: 2px;
+}
+.msgclass123 {
+  background-color: green;
+  width: max-content;
+  height: 2%;
+  padding: 1%;
+  margin-left: 20px;
+}
+p.resetmsg123 {
+  color: white;
+}
 .msgclass {
   background-color: green;
   color: white;
   margin-left: 69px;
   width: 25%;
   margin-top: 10px;
+  height: 0%;
 }
 .resetmsg {
-  margin-left: 48px !important;
+  margin-left: 48px !important; 
   color: white;
 }
 span.wpcf7-list-item.other12 {
@@ -5132,7 +5168,7 @@ label.profile-value {
 
   .dashboard-content-inner h5 {
     font-weight: 600;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0px solid #ddd;
     margin: 15px;
     width: 100%;
     font-size: 19px;

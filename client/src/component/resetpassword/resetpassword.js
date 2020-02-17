@@ -21,9 +21,13 @@ class ResetPassword extends Component {
             fields: {},
             pshowAlert: false,
             msgModal: false,
+            signButton: true,
+            newPassword: 'password',
+            confirmPassword: 'password',
             presetdata: []
         };
         this.passwordupdate = this.passwordupdate.bind(this);
+
         this.passwordlinkstatus = this.passwordlinkstatus.bind(this);
     }
 
@@ -31,6 +35,8 @@ class ResetPassword extends Component {
         const Userdata = {
             'useremail': this.state.useremail
         }
+
+
         API.getpasswordlinkstatus(Userdata)
             .then(res => {
                 console.log('frontres:', res.data);
@@ -51,6 +57,26 @@ class ResetPassword extends Component {
 
     componentDidMount() {
         this.passwordlinkstatus();
+    }
+    showHideNewPassword = () => {
+        this.setState({
+            newPassword: 'text'
+        })
+    }
+    hideNewPassword = () => {
+        this.setState({
+            newPassword: 'password'
+        })
+    }
+    showHideConfirmPassword = () => {
+        this.setState({
+            confirmPassword: 'text'
+        })
+    }
+    hideConfirmPassword = () => {
+        this.setState({
+            confirmPassword: 'password'
+        })
     }
 
     passwordupdateMevalidationCheck() {
@@ -89,19 +115,21 @@ class ResetPassword extends Component {
         fields[field] = e.target.value;
         this.setState({ fields });
     }
-
+    signMe = () => {
+        this.props.history.replace('/front/register')
+    }
     passwordupdate() {
+
         if (this.passwordupdateMevalidationCheck()) {
             console.log('cpass sss', this.refs.cpassword.value);
-            console.log('xx parms is',
-                this.props.match.params.token);
+            console.log('xx parms is', this.props.match.params.token);
             const userInfoVo = {
                 'password': this.refs.password.value,
                 'useremail': this.state.useremail,
                 'token': this.props.match.params.token
             }
-            console.log('userInfoVo123', userInfoVo);
 
+            console.log('useremailuseremail', userInfoVo);
             API.emailpasswordResetWithSendEmail(userInfoVo)
                 .then((result) => {
                     if (result.data.success) {
@@ -109,13 +137,13 @@ class ResetPassword extends Component {
                             pshowAlert: true,
                             color: 'green',
                             message: result.data.message,
-                            msgModal: true
+                            msgModal: true,
+                            signButton: false
                         });
                         setTimeout(() => {
                             this.setState({
                                 msgModal: false
                             })
-                            this.props.history.replace('/front/register');
                         }, 2000)
                     } else {
                         this.setState({
@@ -139,85 +167,90 @@ class ResetPassword extends Component {
     render() {
         console.log('dataaaaa:', this.state.presetdata.data);
         return (
-            <div className="password-profile-section">
-                <section id="password-dashboard-main">
-                    <div className="container">
+            // <div className="password-profile-section">
+            //     <section id="password-dashboard-main">
+            //         <div className="container">
 
-                        <div className="row">
-                            <div class="inner-page-banner-heading">
-                                <h2>RESET PASSWORD</h2>
-                            </div>
-                            <div className="row dashboard-content-inner">
-                                <h5>Reset password for email@email.com</h5>
-                                <div className="col-lg-12 col-md-12 col-sm-12">
-                                    <form className="row">
-                                        <div className="col-md-6 col-sm-12">
-                                            <div className="form-group">
-                                                <label>Enter new password</label>
-                                                <input name="password" ref="password" value={this.state.fields["password"] ? this.state.fields["password"] : ''} onChange={this.registerMehandleChange.bind(this, "password")} type="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} placeholder="Password" />
-                                                {/* <input type="password" ref="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} onChange={this.passwordupdateMehandleChange.bind(this, "password")} name="password" placeholder="password" /> */}
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Confirm new password</label>
-                                                <input name="cpassword" ref="cpassword" value={this.state.fields["cpassword"] ? this.state.fields["cpassword"] : ''} onChange={this.registerMehandleChange.bind(this, "cpassword")} type="password" className={this.state.errors["cpassword"] ? this.state.errors["cpassword"] : 'form-control'} placeholder="Confirm Password" />
-                                                {/* <input type="password" ref="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} onChange={this.passwordupdateMehandleChange.bind(this, "password")} name="password" placeholder="password" /> */}
-                                            </div>
+            //             <div className="row">
+            //                 <div class="inner-page-banner-heading">
+            //                     <h2>RESET PASSWORD</h2>
+            //                 </div>
+            //                 <div className="row dashboard-content-inner">
+            //               <h5>Reset password for {this.state.useremail}</h5>
+            //                     <div className="col-lg-12 col-md-12 col-sm-12">
+            //                         <form className="row">
+            //                             <div className="col-md-6 col-sm-12">
+            //                                 <div className="form-group">
+            //                                     <label>Enter new password</label>
+            //                                     <input name="password" ref="password" value={this.state.fields["password"] ? this.state.fields["password"] : ''} onChange={this.registerMehandleChange.bind(this, "password")} type="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} placeholder="Password" />
 
-                                        </div>
-                                    </form>
+            //                                 </div>
+            //                                 <div className="form-group">
+            //                                     <label>Confirm new password</label>
+            //                                     <input name="cpassword" ref="cpassword" value={this.state.fields["cpassword"] ? this.state.fields["cpassword"] : ''} onChange={this.registerMehandleChange.bind(this, "cpassword")} type="password" className={this.state.errors["cpassword"] ? this.state.errors["cpassword"] : 'form-control'} placeholder="Confirm Password" />
+
+            //                                 </div>
+
+            //                             </div>
+            //                         </form>
+            //                     </div>
+            //                     <div className="form-group">
+            //                         <input type="button" onClick={this.passwordupdate} className="light-btn button" value="RESET PASSWORD" style={{ background: '#7030a0', borderColor: '#7030a0' }} />
+            //                     </div>
+            //                 </div>
+            //                 {this.state.msgModal ? <div className="msgclass"><p className="resetmsg">YOU HAVE SUCCESSFULLY RESET YOUR PASSWORD</p></div> : ''}
+
+
+
+            //             </div>
+            //         </div>
+            //     </section>
+            // </div>
+
+            <div className="row">
+
+                <div class="inner-page-banner-heading">
+                    <h2>RESET PASSWORD</h2>
+                </div>
+                <div className="dashboard-content-inner">
+                    <div className="row">
+                        <h5>Reset password for {this.state.useremail}</h5>
+                        {/* <h5 className="dash">Forgot your login? <Link to="/front/contact">Please contact us.</Link></h5>
+                    <h5>Forgotten your password? Please enter your email below:</h5> */}
+                        {/* <h5>Please enter your email below if you have forgotten your password.<Link to="/front/contact">Contact us</Link> if you have forgotten your login.</h5> */}
+                        <div className="col-lg-12 col-md-12 col-sm-12">
+
+                            <div className="col-md-6 col-sm-12">
+                                <div className="form-group">
+                                    <label>Enter new password</label>
+                                    <input name="password" ref="password" value={this.state.fields["password"] ? this.state.fields["password"] : ''} onChange={this.registerMehandleChange.bind(this, "password")} type={this.state.newPassword} className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'} placeholder="Password" />
+
+                                    {this.state.newPassword == 'password' ? <button className="newpass" onClick={this.showHideNewPassword}>Show</button> : <button className="newpass" onClick={this.hideNewPassword}>Hide</button>}
+
+
+
                                 </div>
                                 <div className="form-group">
-                                    <input type="button" onClick={this.passwordupdate} className="light-btn button" value="RESET PASSWORD" style={{ background: '#7030a0', borderColor: '#7030a0' }} />
+                                    <label>Confirm new password</label>
+                                    <input name="cpassword" ref="cpassword" value={this.state.fields["cpassword"] ? this.state.fields["cpassword"] : ''} onChange={this.registerMehandleChange.bind(this, "cpassword")} type={this.state.confirmPassword} className={this.state.errors["cpassword"] ? this.state.errors["cpassword"] : 'form-control'} placeholder="Confirm Password" />
+                                    {/* <button onClick={this.showHideConfirmPassword}>Show</button> */}
+                                    {this.state.confirmPassword == 'password' ? <button className="newpass" onClick={this.showHideConfirmPassword}>Show</button> : <button className="newpass" onClick={this.hideConfirmPassword}>Hide</button>}
                                 </div>
+
                             </div>
-                            {this.state.msgModal ? <div className="msgclass"><p className="resetmsg">YOU HAVE SUCCESSFULLY RESET YOUR PASSWORD</p></div> : ''}
-                            {/* {this.state.presetdata.data ? (<div className="col-lg-12 col-md-12 col-sm-12">
-                                    <div style={{ width:'100%', marginLeft:'0px'}} className="dashboard-content"> 
-                                       {this.state.presetdata.data.presetlink == '0' ? (<div className="row dashboard-content-inner"> 
-                                            <h5>Your new password:</h5>
-                                            <div className="col-lg-12 col-md-12 col-sm-12">
-                                            { this.state.pshowAlert	? (<div style={{background:this.state.color}} className="Idmessage">{this.state.message}</div>) : '' }
-                                                <form className="row">
-                                                    <div className="col-md-6 col-sm-12">
-                                                        <div className="form-group">
-                                                            <label>Password</label>
-                                                            <input type="password" ref="password" className={this.state.errors["password"] ? this.state.errors["password"] : 'form-control'}  onChange={this.passwordupdateMehandleChange.bind(this, "password")}  name="password" placeholder="password" />
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div className="col-md-6 col-sm-12">
-                                                        <input type="button"  onClick={this.passwordupdate} className="light-btn" value="Save" style={{background:'#7030a0', borderColor: '#7030a0' }}/>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            </div>) : (<div className="row dashboard-content-inner">         
-                                                <h5>Password Reset Alert:</h5>
-                                                <div className="col-lg-12 col-md-12 col-sm-12">
-                                                        <p> Your password reset link expire. you can change password from 
-                                                            reset password option inside your profile.
-                                                        </p>
-                                                </div>
-                                            </div>) }
-                                    </div>
-                                </div>) :
-                                (<div className="col-lg-12 col-md-12 col-sm-12">
-                                    <div style={{ width:'100%', marginLeft:'0px'}} className="dashboard-content">
-                                            <div className="row dashboard-content-inner">         
-                                                <h5>Password Reset Alert:</h5>
-                                                <div className="col-lg-12 col-md-12 col-sm-12">
-                                                        Something Going wrong please check password reset link.
-                                                </div>
-                                            </div>
-                                    </div>
-                                 </div>)
-                            } */}
 
 
                         </div>
+
+                        <div style={{ width: "100%" }} className="form-group">
+                            {this.state.signButton ? <input type="button" onClick={this.passwordupdate} className="light-btn button" value=" RESET PASSWORD" style={{ background: '#7030a0', borderColor: '#7030a0' }} /> : ''}
+                        </div>
+                        {this.state.msgModal ? <div className="msgclass1234"><p style={{ paddingLeft: "22px" }} className="resetmsg123">YOUR PASSWORD IS NOW CHANGED. PLEASE USE THE <br />LINK BELOW TO SIGN-IN.</p></div> : ''}
+                        {this.state.signButton ? '' : <div style={{ width: "100%" }}><input type="button" onClick={this.signMe} className="light-btn button" value="SIGN-IN" style={{ background: '#7030a0', borderColor: '#7030a0' }} /></div>}
                     </div>
-                </section>
+                </div>
             </div>
+
         );
     }
 }

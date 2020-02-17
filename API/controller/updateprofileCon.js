@@ -197,22 +197,35 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
         _getToken(userdata)
             .then(token => {
                 console.log('token12345', token);
-                let localUrl = `http://localhost:3000/front/resetpassword/`+token
-                //let localUrl = `http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/` + token
+              
+                let localUrl = `http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/` + token
+                //let localUrl = `http://localhost:3000/front/resetpassword/`+token
+                const emailForUser = `<!docType html>
+                <body>
+                <p>We received a request to change your SET IT AND LEAVE IT password. If you initiated this request, then please click on this <a href=` + localUrl + `>link</a> to reset you password. If you did not initiate a password reset, please reply to this email to let is know.
+                </p>
+                <p style="margin:0;font-size:14px">Best Regards,</p>
+                <p style="margin-bottom:10px;font-size:16px"><em style="color:#9464B8">SET IT <span style="font-size:10px;">AND</span> LEAVE IT</em> Team</p><br/><br/>
+                <p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" style="width:200px;height:auto"/></p>
+                <p style="margin-top:10px;font-size:16px"><b>Phone:</b> <a href="tel:18669005050">1-866-900-5050</a> | <b>Email:</b> <a href="mailto:info@setitandleaveit.com">info@SetItandLeaveIt.com</a> | <b>Web:</b> <a href="www.setitandleaveit.com">www.SetItandLeaveIt.com</a></p>
+                </body></html>`;
+               
                 const UpdateProfilemsg = {
                     from: '"SET IT AND LEAVE IT" <' + creds.USER + '>', // sender address
                     to: req.body.useremail, //creds.USER, // list of receivers
                     subject: 'Reset your password.', // Subject line
                     //html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',
                     // html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://localhost:3000/front/resetpassword/'+token+'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',
-                    html: `<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click <a href=` + localUrl + `>link</a> on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" style="width:200px;height:auto"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>`
+                    
+                    html: emailForUser
                 };
                 sgMail.send(UpdateProfilemsg);
-
+                res.status(201).json({
+                    success: true,
+                    message: 'WE EMAILED YOU A LINK TO RESET YOUR PASSWORD(CHECK SPAM IF YOU DO NOT SEE IT)'
+                });
+            
             })
-
-
-
 
     } catch (err) {
         // res.status(401).json({
