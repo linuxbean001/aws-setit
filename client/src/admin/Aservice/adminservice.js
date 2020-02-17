@@ -3,7 +3,7 @@ export default class AdminService {
 
     constructor() {
         this.domain = 'ec2-18-221-255-18.us-east-2.compute.amazonaws.com';
-        //this.domain = 'http://localhost:3300';
+         //this.domain = 'http://localhost:3300';
     }
 
     getUserAll(){

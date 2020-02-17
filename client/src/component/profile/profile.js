@@ -3216,8 +3216,8 @@ class Profile extends Component {
 
         }
 
-        if (this.state.banking || this.state.brokerage || this.state.retirementAccount || this.state.rothAccount || this.state.otherTypes || this.state.otherApproxValue) {
-            let banking = 0, brokerage = 0, retirementAccount = 0, rothAccount = 0, otherTypes = 0, otherApproxValue = 0;
+        if (this.state.banking || this.state.brokerage || this.state.retirementAccount || this.state.rothAccount  || this.state.otherApproxValue) {
+            let banking = 0, brokerage = 0, retirementAccount = 0, rothAccount = 0, otherApproxValue = 0;
             if (this.state.banking) {
                 banking = parseInt(this.state.banking.replace(/,/g, ""));
             } else {
@@ -3241,11 +3241,12 @@ class Profile extends Component {
             } else {
                 rothAccount = 0;
             }
-            if (this.state.otherTypes) {
-                otherTypes = parseInt(this.state.otherTypes.replace(/,/g, ""))
-            } else {
-                otherTypes = 0;
-            }
+
+            // if (this.state.otherTypes) {
+            //     otherTypes = parseInt(this.state.otherTypes.replace(/,/g, ""))
+            // } else {
+            //     otherTypes = 0;
+            // }
 
             if (this.state.otherApproxValue) {
                 otherApproxValue = parseInt(this.state.otherApproxValue.replace(/,/g, ""))
@@ -3253,7 +3254,7 @@ class Profile extends Component {
                 otherApproxValue = 0;
             }
 
-            AssetsApproxTotal = banking + brokerage + retirementAccount + rothAccount + otherTypes + otherApproxValue;
+            AssetsApproxTotal = banking + brokerage + retirementAccount + rothAccount + otherApproxValue;
             console.log('banking:', this.state.banking)
             console.log('brokerage:', this.state.brokerage)
             console.log('retirementAccount:', this.state.retirementAccount)

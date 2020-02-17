@@ -58,12 +58,12 @@ export default class PasswordReset extends Component {
               message: result.data.message
             });
           }
-          setTimeout(() => {
-            this.setState({
-              passModal: false
-            })
+          // setTimeout(() => {
+          //   this.setState({
+          //     passModal: false
+          //   })
          
-          }, 2000)
+          // }, 2000)
         }).catch(err => {
           // console.log('xxx new:', err);
         })

@@ -140,11 +140,11 @@ class ResetPassword extends Component {
                             msgModal: true,
                             signButton: false
                         });
-                        setTimeout(() => {
-                            this.setState({
-                                msgModal: false
-                            })
-                        }, 2000)
+                        // setTimeout(() => {
+                        //     this.setState({
+                        //         msgModal: false
+                        //     })
+                        // }, 2000)
                     } else {
                         this.setState({
                             pshowAlert: true,
