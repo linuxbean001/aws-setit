@@ -441,7 +441,7 @@ handleClick=()=>{
             <i onClick={this.handleClick} class={this.state.menuClass ? 'fa fa-cogs visible-xs d_slide navigation_button' : 'fa fa-cogs visible-xs d_slide navigation_button_left'}  aria-hidden="true" ></i>
            
             <nav className={this.state.menuClass ? 'woocommerce-MyAccount-navigation left_panel navigation_slide' : 'woocommerce-MyAccount-navigation left_panel'}>
-            <div className="menuhead"> Main Menu</div>
+            <div className="menuhead">Main Menu</div>
             <MetisMenu content={Menucontent} activeLinkFromLocation />
             
         <li class="metismenu-item">

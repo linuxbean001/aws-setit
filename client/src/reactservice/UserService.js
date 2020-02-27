@@ -5,16 +5,16 @@ export default class RegisterService {
 
     constructor() {
         
-        this.domain = 'ec2-18-221-255-18.us-east-2.compute.amazonaws.com'; 
-         //this.domain = 'http://localhost:3300';
+        //this.domain = 'ec2-18-221-255-18.us-east-2.compute.amazonaws.com'; 
+        this.domain = 'http://localhost:3300';
     }    
 
     getProfile() {
         return decode(this.getToken()); 
     }
-    
+ 
     registerUser(userInfoVo) {
-           return axios.post( '/sellandleave/addUser', userInfoVo) 
+           return axios.post(this.domain+ '/sellandleave/addUser', userInfoVo) 
             .then((result) => {
                 console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
                 return (result);
@@ -27,7 +27,7 @@ export default class RegisterService {
     }
 
     login(email, password) {
-        return axios.post( '/sellandleave/login', {
+        return axios.post(this.domain+ '/sellandleave/login', {
             email: email,
             pass: password
         }).then(result => {
@@ -77,10 +77,22 @@ export default class RegisterService {
         const token = this.getToken() 
         return !!token && !this.isTokenExpired(token) 
     }
+    getEmailByToken (userInfoVo) {
+        console.log('userInfoVo123',userInfoVo);
+        
+        return axios.post(this.domain + '/sellandleave/getemailbytoken', userInfoVo)
+        .then((result) => {
+            console.log('xxxxxxx get email by toekn',result);
+            return (result);
+        }).catch(err =>{
+            console.log('cccccc',err);
+            return (err)
+        })
+    }
 
     contactUsService(userInfoVo) {
         console.log('hello: ',userInfoVo);
-        return axios.post( '/sellandleave/contactus', userInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/contactus', userInfoVo) 
          .then((result) => {
              console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
              return (result);
@@ -92,7 +104,7 @@ export default class RegisterService {
 
     updateProfileUser(userInfoVo) {
         console.log('updateuser:',userInfoVo );
-        return axios.post( '/sellandleave/updateProfile', userInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/updateProfile', userInfoVo) 
          .then((result) => {
              console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
              localStorage.removeItem('id_token');
@@ -106,7 +118,7 @@ export default class RegisterService {
 
     passwordReset(userInfoVo) {
         console.log('updateuser:',userInfoVo );
-        return axios.post( '/sellandleave/resetpassword', userInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/resetpassword', userInfoVo) 
          .then((result) => {
              return (result);
          }).catch(err => {
@@ -118,7 +130,7 @@ export default class RegisterService {
     
     emailpasswordReset(userInfoVo) {
         console.log('updateuser:',userInfoVo);
-        return axios.post( '/sellandleave/useremailsendresetlink', userInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/useremailsendresetlink', userInfoVo) 
          .then((result) => {
              console.log('resultuserInfoVo',userInfoVo);
              return (result);
@@ -129,7 +141,7 @@ export default class RegisterService {
     }
     emailpasswordResetWithSendEmail(userInfoVo) {
         console.log('updateuser:',userInfoVo );
-        return axios.post( '/sellandleave/useremailresetpassword', userInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/useremailresetpassword', userInfoVo) 
          .then((result) => {
              return (result);
          }).catch(err => {
@@ -140,7 +152,7 @@ export default class RegisterService {
 
     getpasswordlinkstatus(userInfoVo) {
         console.log('updateuser:',userInfoVo );
-        return axios.post( '/sellandleave/passwordlinkstatus', userInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/passwordlinkstatus', userInfoVo) 
          .then((result) => {
              return (result);
          }).catch(err => {
@@ -152,7 +164,7 @@ export default class RegisterService {
 
     getemailverificationStatus(userInfoVo) {
         console.log('updateuser:',userInfoVo );
-        return axios.post( '/sellandleave/emailstatus', userInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/emailstatus', userInfoVo) 
          .then((result) => {
              return (result);
          }).catch(err => {
@@ -165,7 +177,7 @@ export default class RegisterService {
 
     toolsInputsActivityLog(toolsInputs) {        
 
-        return axios.post( '/sellandleave/toolsInputs', toolsInputs) 
+        return axios.post(this.domain+ '/sellandleave/toolsInputs', toolsInputs) 
          .then((result) => {           
             
              console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
@@ -180,7 +192,7 @@ export default class RegisterService {
 
     generatePDFActivityLog(generatePDF) {        
         
-        return axios.post( '/sellandleave/generatePDF', generatePDF) 
+        return axios.post(this.domain+ '/sellandleave/generatePDF', generatePDF) 
          .then((result) => {           
             
              console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
@@ -195,7 +207,7 @@ export default class RegisterService {
 
     submitQuestionService(questionInfoVo) {
         console.log('submitQuestionService:',questionInfoVo );
-        return axios.post( '/sellandleave/submitquestion', questionInfoVo) 
+        return axios.post(this.domain+ '/sellandleave/submitquestion', questionInfoVo) 
          .then((result) => {
              console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
              return (result);
@@ -204,10 +216,20 @@ export default class RegisterService {
              return (err);
          });
     }
+    submitPdfQuestion(InfoVo){
+        return axios.post(this.domain+ '/sellandleave/submitpdfquestion',InfoVo)
+        .then((result) =>{
+            console.log('xxxxxxx xxxxxxxxxxx here yes  is::: ', result);
+            return (result)
+        }).catch(err => {
+            console.log('xxxxxxx xxxxxxxxxxx err is::: ', err);
+            return (err)
+        })
+    }
 
     getQuestionService(id){
         console.log('usergetQuestionService...xx..x',id);
-        return axios.post( '/sellandleave/questionList', id)
+        return axios.post(this.domain+ '/sellandleave/questionList', id)
             .then((result) => {
                 return (result);
             }).catch(err => {

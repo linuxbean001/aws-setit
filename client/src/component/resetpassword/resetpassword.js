@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import decode from 'jwt-decode'
 import { Link, NavLink, withRouter, BrowserRouter as Router } from 'react-router-dom'
 import UserService from '../../reactservice/UserService'
 const API = new UserService();
@@ -24,6 +25,7 @@ class ResetPassword extends Component {
             signButton: true,
             newPassword: 'password',
             confirmPassword: 'password',
+            userTokenEmail: '',
             presetdata: []
         };
         this.passwordupdate = this.passwordupdate.bind(this);
@@ -57,6 +59,8 @@ class ResetPassword extends Component {
 
     componentDidMount() {
         this.passwordlinkstatus();
+        this.getEmailByToken();
+        document.title = "RESET PASSWORD - SET IT AND LEAVE IT"
     }
     showHideNewPassword = () => {
         this.setState({
@@ -118,6 +122,7 @@ class ResetPassword extends Component {
     signMe = () => {
         this.props.history.replace('/front/register')
     }
+
     passwordupdate() {
 
         if (this.passwordupdateMevalidationCheck()) {
@@ -156,6 +161,24 @@ class ResetPassword extends Component {
                     // console.log('xxx new:', err);
                 })
         }
+    }
+    getEmailByToken = () => {
+        console.log('decodedecode', decode(this.props.match.params.token));
+        const email = decode(this.props.match.params.token).email
+        this.setState({
+            userTokenEmail: email
+        })
+        // const userInfoVo = {
+        //     'token': this.props.match.params.token
+        // }
+        // API.getEmailByToken(userInfoVo)
+        //     .then((result) => {
+        //         console.log('resultresultresultresultresult',result);
+        //         this.setState({
+        //             userTokenEmail: result.data.data
+        //         })
+
+        //     })
     }
 
     passwordupdateMehandleChange(field, e) {
@@ -214,7 +237,7 @@ class ResetPassword extends Component {
                 </div>
                 <div className="dashboard-content-inner">
                     <div className="row">
-                        <h5>Reset password for {this.state.useremail}</h5>
+                        <h5>Reset password for {this.state.userTokenEmail}</h5>
                         {/* <h5 className="dash">Forgot your login? <Link to="/front/contact">Please contact us.</Link></h5>
                     <h5>Forgotten your password? Please enter your email below:</h5> */}
                         {/* <h5>Please enter your email below if you have forgotten your password.<Link to="/front/contact">Contact us</Link> if you have forgotten your login.</h5> */}

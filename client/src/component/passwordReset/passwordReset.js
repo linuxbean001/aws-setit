@@ -13,19 +13,17 @@ export default class PasswordReset extends Component {
       pshowAlert: false,
       presetdata: []
     };
-    this.passwordupdate = this.passwordupdate.bind(this)
+    this.passwordupdate = this.passwordupdate.bind(this) 
+  }
+
+  componentDidMount(){
+    document.title = "FORGOT PASSWORD - SET IT AND LEAVE IT"
   }
   passwordupdateMevalidationCheck() {
 
     let fields = this.state.fields;
     let errors = {};
     let formIsValid = true;
-
-    //  if(!this.refs.password.value){
-    //      formIsValid = false;
-    //      errors["password"] = "error_sell form-control";
-    //  }
-
 
     this.setState({ errors: errors });
     return formIsValid;

@@ -90,6 +90,8 @@ class Home extends Component{
 
 
     render(){
+        let arr = [1,2,3,-4,6,7,8]; 
+        console.log('Math.min',Math.min(...arr)); 
 
         console.log('PeaceData', this.state.PeaceData);
         return(

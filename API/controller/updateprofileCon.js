@@ -185,6 +185,14 @@ function _setDataForToken(data) {
     }
     return tokenData;
 }
+exports.getemailbytokenToDb = async (req, res, next) => {
+    const decoded = jwt.verify(req.body.token, 'JWT_TOKEN_SECRET')
+    res.status(200).json({
+        data: decoded.email,
+        success: true,
+        message: 'successfylly decode token.'
+    });
+}
 
 exports.useremailsendresetlinkTODb = async (req, res, next) => {
 
@@ -197,9 +205,9 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
         _getToken(userdata)
             .then(token => {
                 console.log('token12345', token);
-              
+
                 let localUrl = `http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/` + token
-                //let localUrl = `http://localhost:3000/front/resetpassword/`+token
+                //let localUrl = `http://localhost:3000/front/resetpassword/` + token
                 const emailForUser = `<!docType html>
                 <body>
                 <p>We received a request to change your SET IT AND LEAVE IT password. If you initiated this request, then please click on this <a href=` + localUrl + `>link</a> to reset you password. If you did not initiate a password reset, please reply to this email to let is know.
@@ -209,14 +217,14 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
                 <p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" style="width:200px;height:auto"/></p>
                 <p style="margin-top:10px;font-size:16px"><b>Phone:</b> <a href="tel:18669005050">1-866-900-5050</a> | <b>Email:</b> <a href="mailto:info@setitandleaveit.com">info@SetItandLeaveIt.com</a> | <b>Web:</b> <a href="www.setitandleaveit.com">www.SetItandLeaveIt.com</a></p>
                 </body></html>`;
-               
+
                 const UpdateProfilemsg = {
                     from: 'SET IT AND LEAVE IT <' + creds.USER + '>', // sender address
                     to: req.body.useremail, //creds.USER, // list of receivers
                     subject: 'Reset your password.', // Subject line
                     //html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com/front/resetpassword/' + token + 'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',
                     // html: '<!docType html><body><p>We have received a request to change the password for your account. If you initiated this request,then please click ' + 'http://localhost:3000/front/resetpassword/'+token+'on this link to reset your password. If this was NOT you, please let us know.</p><p>Best Regards</p><p>SET IT AND LEAVE IT TEAM</p><p><img src="https://firebasestorage.googleapis.com/v0/b/test-85de8.appspot.com/o/logo1.096101be.png?alt=media&token=c8c17d4d-ac1d-46a6-ae59-8afb7dba94da" height="42" width="42"/></p><p>Phone:1-866-900-5050 | Email: info@set0itandleaveit.com<p/></body></html>',
-                    
+
                     html: emailForUser
                 };
                 sgMail.send(UpdateProfilemsg);
@@ -224,7 +232,7 @@ exports.useremailsendresetlinkTODb = async (req, res, next) => {
                     success: true,
                     message: 'WE EMAILED YOU A LINK TO RESET YOUR PASSWORD(CHECK SPAM IF YOU DO NOT SEE IT)'
                 });
-            
+
             })
 
     } catch (err) {
@@ -458,6 +466,102 @@ exports.emailstatusTODb = async (req, res, next) => {
     }
 
 }
+exports.userQuePdfTODb = async (req,res,next) => {
+    const userQusetionVo = new userQusetion({
+        name: req.body.name,
+        address: req.body.address,
+        phone: req.body.phone,
+        reasonGoalConsultation: req.body.reasonGoalConsultation,
+        reasonSIALI: req.body.reasonSIALI,
+        email: req.body.email,
+        age: req.body.age,
+        married: req.body.married,
+        Kids: req.body.Kids,
+        grandkid: req.body.grandkid,
+        pets: req.body.pets,
+        personalOtherDetails: req.body.personalOtherDetails,
+        homeValue: req.body.homeValue,
+        Mortgage: req.body.Mortgage,
+        approxEquity: req.body.approxEquity,
+        homeBox: req.body.homeBox,
+        iWeRent: req.body.iWeRent,
+        monthlyRent: req.body.monthlyRent,
+        homeBanking: req.body.homeBanking,
+        homeBrokerage: req.body.homeBrokerage,
+        homeRetirementAccount: req.body.homeRetirementAccount,
+        homeRothAccount: req.body.homeRothAccount,
+        homeOther: req.body.homeOther,
+        homeSS: req.body.homeSS,
+        homePension: req.body.homePension,
+        banking: req.body.banking,
+        brokerage: req.body.brokerage,
+        retirementAccount: req.body.retirementAccount,
+        rothAccount: req.body.rothAccount,
+        otherTypes: req.body.otherTypes,
+        otherApproxValue: req.body.otherApproxValue,
+        dbAssetsApproxTotal: req.body.dbAssetsApproxTotal,
+        socailSecurity: req.body.socailSecurity,
+        pension: req.body.pension,
+        others: req.body.others,
+        essential: req.body.essential,
+        discretionary: req.body.discretionary,
+        oneOffExpenses: req.body.oneOffExpenses,
+        noInsurance: req.body.noInsurance,
+        medicare: req.body.medicare,
+        supplementalHealth: req.body.supplementalHealth,
+        longtermcare: req.body.longtermcare,
+        lifeInsurance: req.body.lifeInsurance,
+        inotherbox: req.body.inotherbox,
+        lifeInType: req.body.lifeInType,
+        lifeamount: req.body.lifeamount,
+        inother: req.body.inother,
+        analyticalInExperience: req.body.analyticalInExperience,
+        capitalPreservation: req.body.capitalPreservation,
+        investIncome: req.body.investIncome,
+        investGrowth: req.body.investGrowth,
+        investGrowthIncome: req.body.investGrowthIncome,
+        investAggressiveGrowth: req.body.investAggressiveGrowth,
+        currentAllocationStock: req.body.currentAllocationStock,
+        experience_1_10: req.body.experience_1_10,
+        expectations: req.body.expectations,
+        experience_gb: req.body.experience_gb,
+        riskAggressive: req.body.riskAggressive,
+        riskModerate: req.body.riskModerate,
+        riskConservative: req.body.riskConservative,
+        portfolioDrawdown: req.body.portfolioDrawdown,
+        riskPreservation: req.body.riskPreservation,
+        riskIncome: req.body.riskIncome,
+        riskGrowth: req.body.riskGrowth,
+        lastMarketDownturn: req.body.lastMarketDownturn,
+        portfolio1: req.body.portfolio1,
+        portfolio2: req.body.portfolio2,
+        portfolio3: req.body.portfolio3,
+        portfolio4: req.body.portfolio4,
+        portfolio5: req.body.portfolio5,
+        aaii: req.body.aaii,
+        advisorPerspectives: req.body.advisorPerspectives,
+        alphaArchiect: req.body.alphaArchiect,
+        referral: req.body.referral,
+        referralContent: req.body.referralContent,
+        otherOthers: req.body.otherOthers,
+        otherOthersContent: req.body.otherOthersContent,
+        whatAttracted: req.body.whatAttracted,
+        improveQuestionnaire: req.body.improveQuestionnaire,
+        setItAndLeaveItRetirement: req.body.setItAndLeaveItRetirement,
+        fixedAnnuityProduct: req.body.fixedAnnuityProduct,
+        insuranceProduct: req.body.insuranceProduct,
+        investmentAdvice: req.body.investmentAdvice,
+        estatePlanning: req.body.estatePlanning,
+        taxPlanning: req.body.taxPlanning,
+        otherGoalServicecheck: req.body.otherGoalServicecheck,
+        otherGoalService: req.body.otherGoalService,
+        goalComment: req.body.goalComment,
+        goalQuestion: req.body.goalQuestion,
+        datetime: req.body.datetime
+    })
+    console.log('userQusetionVouserQusetionVo',userQusetionVo);
+    
+}
 
 
 exports.userQuestionTODb = async (req, res, next) => {
@@ -672,17 +776,19 @@ exports.userQuestionTODb = async (req, res, next) => {
                 // if (req.body.name !='' && req.body.address !='' && req.body.phone !='' && req.body.reasonGoalConsultation !='' && req.body.reasonSIALI !='' && req.body.email !='' && req.body.age !='' && req.body.married !='' && req.body.Kids !='' && req.body.grandkid !='' && req.body.pets !='' && req.body.liquid !='' && req.body.ss !='' && req.body.pension !='' && req.body.others !='' && req.body.essential !='' && req.body.oneOffExpenses !='' && req.body.medicare !='' && req.body.longtermcare !='' && req.body.lifeamount !='' && req.body.inother !='' && req.body.goal !='' && req.body.experience_1_10 !='' && req.body.expectations !='' && req.body.experience_gb !='' && req.body.riskAggressive !='' && req.body.riskModerate !='' && req.body.riskConservative !='' && req.body.portfolioDrawdown !='' ) {
                 let approxTotal = '', mailSubject = '';
                 let emailForAdmin = '', emailForUser = '';
-
-                if (!req.body.dbAssetsApproxTotal) {
-                    approxTotal = 'N/A';
-                } else {
+             console.log('req.body.dbAssetsApproxTotal',req.body.dbAssetsApproxTotal);
+             
+                if (req.body.dbAssetsApproxTotal) {
                     approxTotal = req.body.dbAssetsApproxTotal;
+                } else {
+                    approxTotal = 'N/A';
+                   
                 }
 
 
                 if (req.body.data_id == '1') {
                     console.log('Save Vivek', userdetailsresult[0].email);
-                    mailSubject = 'Partial questionnaire saved (Total assets: ' + approxTotal + ')';
+                    mailSubject = 'Partial questionnaire saved (Total assets: ' + req.body.dbAssetsApproxTotal + ')';
                     emailForAdmin = `
             <div style="padding:10px 100px 0px 0px;width:60%">
                 <center><h1 style="margin:0;">Questionnaire</h1></center>
@@ -690,7 +796,7 @@ exports.userQuestionTODb = async (req, res, next) => {
                 <p>${userdetailsresult[0].name} submitted questionnaire</p>
                 <p>Name: ${userdetailsresult[0].name} </p>
                 <p>Email: ${userdetailsresult[0].email} </p>
-                <p>Total assets: ${approxTotal} </p>
+                <p>Total assets: ${req.body.dbAssetsApproxTotal} </p>
             </div>`;
 
                     emailForUser = `
@@ -710,18 +816,25 @@ exports.userQuestionTODb = async (req, res, next) => {
                 <br/><br/> <p style="margin-top:10px;font-size:16px"><b>Phone:</b> <a href="tel:18669005050">1-866-900-5050</a> | <b>Email:</b> <a href="mailto:info@setitandleaveit.com">info@SetItandLeaveIt.com</a> | <b>Web:</b> <a href="www.setitandleaveit.com">www.SetItandLeaveIt.com</a></p>
 
             </div>`;
+            const QuestionUsermsg = {
+                from: userdetailsresult[0].email,//'"Questionnaire form alert" <'+creds.USER+'>', // sender address
+                to: creds.USER, // list of receivers 
+                subject: mailSubject, // Subject line
+                html: emailForAdmin // html body
+            };
+            sgMail.send(QuestionUsermsg);
 
                 } else {
-                    console.log('Submit Vivek', userdetailsresult[0].email);
-                    mailSubject = 'New questionnaire submission (Total assets: ' + approxTotal + ')';
+                    console.log('Submit Vivek', approxTotal);
+                   mailSubject = 'New questionnaire submission (Total assets: ' + approxTotal + ')';
                     emailForAdmin = `
             <div style="padding:10px 100px 0px 0px;width:60%">
                 <center><h1 style="margin:0;">Questionnaire</h1></center>
                 <br/>          
                 <p>${userdetailsresult[0].name} submitted questionnaire</p>
-                <p>Name: ${userdetailsresult[0].name} </p>
-                <p>Email: ${userdetailsresult[0].email} </p>
-                <p>Total assets: ${approxTotal} </p>
+                 <p>Name: ${userdetailsresult[0].name} </p>
+                 <p>Email: ${userdetailsresult[0].email} </p>
+                 <p>Total assets: ${approxTotal} </p>
             </div>`;
 
                     emailForUser = `
@@ -742,26 +855,75 @@ exports.userQuestionTODb = async (req, res, next) => {
 
             </div>`;
 
-                }
+
+           
+
+            // const QuestionAdminmsg = {
+            //     from: userdetailsresult[0].email,//'"Questionnaire form alert" <'+creds.USER+'>', // sender address
+            //     to: creds.USER, // list of receivers 
+            //     subject: mailSubject, // Subject line
+            //     html: emailForAdmin // html body
+            // };
+            // sgMail.send(QuestionAdminmsg);
+            console.log('ppp2323',req.body.pdfHtml1);
+            
+            let pdfHtml = req.body.pdfHtml1
+            pdf
+        .create(pdfHtml, {})
+        .toFile(
+             //path.join(__dirname, `../../client/public/upload-file/questinaire.pdf`),
+            path.join(__dirname, `../../client/build/upload-file/questinaire.pdf`), 
+            err => {
+                // res.status(201).json({
+                //     message: 'Pdf Download',
+                //     success: true
+                // })
+                console.log('jay ram ji ki');
+                
+             //var file = path.join(__dirname, `../../client/public/upload-file/questinaire.pdf`)
+               var file = path.join(__dirname, `../../client/build/upload-file/questinaire.pdf`)
+                const attachment = fs.readFileSync(file).toString('base64')
+    
                 const QuestionAdminmsg = {
-                    from: '"Questionnaire form alert" <' + creds.USER + '>', // sender address
-                    to: creds.USER, // list of receivers
-                    subject: mailSubject, // Subject line
-                    html: emailForAdmin // html body
+                    from: userdetailsresult[0].email,//'"Questionnaire form alert" <'+creds.USER+'>', // sender address
+                    to: creds.USER, // list of receivers 
+                    subject: 'New questionnaire submission (Total assets: ' + approxTotal + ')', // Subject line
+                    html: emailForAdmin,
+                    attachments: [
+                        {
+                        content: attachment,
+                        filename: 'questinaire.pdf',
+                        type: 'application/pdf',
+                        disposition: 'attachment'
+                        }
+                        ] 
                 };
-                sgMail.send(QuestionAdminmsg)
-                    .then(result => {
-                        console.log('xxx result');
+                sgMail.send(QuestionAdminmsg);
+            }
+        )
 
-                    })
+           
+              
 
-                const QuestionUsermsg = {
-                    from: '' + userdetailsresult[0].name + '  to SET IT AND LEAVE IT <' + creds.USER + '>',   //'"Questionnaire form alert" <'+creds.USER+'>', // sender address
-                    to: userdetailsresult[0].email, // list of receivers
-                    subject: 'Thank you!', // Subject line
-                    html: emailForUser // html body
-                };
-                sgMail.send(QuestionUsermsg);
+            const QuestionUsermsg = {
+                from: ' SET IT AND LEAVE IT <' + creds.USER + '>',//'"Questionnaire form alert" <'+creds.USER+'>', // sender address
+                to: userdetailsresult[0].email, // list of receivers 
+                subject: 'Thank you!', // Subject line
+                html: emailForUser // html body
+            };
+            sgMail.send(QuestionUsermsg);
+
+                }
+               
+
+               
+                // const QuestionUsermsg = {
+                //     from: ' SET IT AND LEAVE IT <' + creds.USER + '>',//'"Questionnaire form alert" <'+creds.USER+'>', // sender address
+                //     to:  userdetailsresult[0].email, // list of receivers 
+                //     subject: 'Thank you!', // Subject line
+                //     html: emailForUser // html body
+                // };
+                // sgMail.send(QuestionUsermsg);
 
 
                 res.status(201).json({
@@ -836,8 +998,8 @@ exports.convertpdfTODb = (req, res, next) => {
     pdf
         .create(req.body.pdfContent, {})
         .toFile(
-            //path.join(__dirname, `../../client/public/upload-file/HelloWorld.pdf`),
-            path.join(__dirname, `../../client/build/upload-file/HelloWorld.pdf`),
+            path.join(__dirname, `../../client/public/upload-file/HelloWorld.pdf`),
+            // path.join(__dirname, `../../client/build/upload-file/HelloWorld.pdf`), 
             err => {
                 res.status(201).json({
                     message: 'Pdf Download',

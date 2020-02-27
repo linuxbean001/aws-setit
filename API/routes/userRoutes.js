@@ -27,6 +27,8 @@ router.post('/useremailsendresetlink',profileUpdateCon.useremailsendresetlinkTOD
 router.post('/passwordlinkstatus', profileUpdateCon.passwordlinkstatusTODb);
 router.post('/emailstatus', profileUpdateCon.emailstatusTODb);
 
+router.post('/getemailbytoken', profileUpdateCon.getemailbytokenToDb)
+
 router.post('/toolenablestatus', profileUpdateCon.toolenablestatusTODb);
 router.post('/toolsInputs', toolsInputsCon.toolsInputsTODb);
 router.post('/generatePDF', generatePDFCon.generatePDFTODb);
@@ -48,6 +50,7 @@ router.post('/WhocanUseitInfo', adminCMSCon.WhocanuseitTODb);
 router.get('/Getwhocanuseit', adminCMSCon.Getwhocanuseit);
 router.post('/PeaceofmindInfo', adminCMSCon.PeaceofmindTODb);
 router.get('/getpeaceofmind', adminCMSCon.Getpeaceofmind);
+
 router.post('/EasytouseInfo', adminCMSCon.EasytouseTODb);
 router.get('/geteasytouse', adminCMSCon.Geteasytouse);
 router.post('/addFAQ', adminCMSCon.addFAQTODb);
@@ -69,6 +72,7 @@ router.get('/pricelist', adminCMSCon.getPriceListTODb);
 router.delete('/delPrice/:id', adminCMSCon.delPriceListTODb);
 router.post('/PriceEditInfo', adminCMSCon.editPriceTODb);
 router.post('/submitquestion', profileUpdateCon.userQuestionTODb);
+router.post('/submitpdfquestion', profileUpdateCon.userQuePdfTODb)
 router.post('/questionList', profileUpdateCon.getuserQuestionTODb); 
 router.get('/questionnairelist', profileUpdateCon.getAllQuestionnaireTODb); 
 router.post('/convertpdf', profileUpdateCon.convertpdfTODb);
