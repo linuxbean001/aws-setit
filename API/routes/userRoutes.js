@@ -17,6 +17,7 @@ const aboutPageCon = require('../controller/aboutPageCon');
 const researchPageCon= require('../controller/researchPageCon');
 
 router.post('/addUser', registerCon.addRegisterTODb);
+router.post('/roleUser',registerCon.roleRegisterTODb)
 router.post('/login', registerCon.getUserLoginTODb);
 router.post('/contactus', contactUsCon.addContactusTODb);
 router.post('/updateProfile', profileUpdateCon.updateProfileTODb);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Adminsidebar from './adminsidebar';
 import bannerImg from '../adminimg/banner-bg.jpg';
 import UserService from '../../reactservice/UserService'
+import logo from './../../assets/img/logo.png'
 const API = new UserService();
 // const newFields = API.getProfile();
 
@@ -36,7 +37,8 @@ class Dashboard extends Component{
           
 
                 <div class="useravatar">
-                    <img alt="" src="https://www.creditinnovationgroup.com/wp-content/uploads/2015/09/profile15.jpg"/>
+                    <img src={logo}/>
+                    {/* <img alt="" src="https://www.creditinnovationgroup.com/wp-content/uploads/2015/09/profile15.jpg"/> */}
                 </div>
                 <div class="card-info"> <span class="card-title">{this.state.fields.name}</span>
                 </div>

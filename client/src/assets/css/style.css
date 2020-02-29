@@ -4747,6 +4747,11 @@ hr.hrtag {
   padding: 1%;
   margin-left: 20px;
 } */
+.card.hovercard .useravatar img {
+  height: 59px !important;
+  width: 100px !important;
+  border-radius: 0% !important;
+}
 .dashboard-content-inner p {
   font-size: 18px;
   line-height: 24px;

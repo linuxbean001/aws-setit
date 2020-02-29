@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const regSchema = new Schema({
     name:String,
+    username:String,
     email: String,
     password: String,
     investor:String,

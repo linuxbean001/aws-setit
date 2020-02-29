@@ -7,7 +7,7 @@ const sgMail = require('@sendgrid/mail');
 const creds = require('./config');
 const pdf = require('html-pdf');
 var path = require('path');
-sgMail.setApiKey(creds.SENDGRID_API_KEY);
+sgMail.setApiKey(creds.SENDGRID_API_KEY); 
 var pdfcrowd = require("pdfcrowd");
 // create the API client instance
 var client = new pdfcrowd.HtmlToPdfClient("set123", "0b2dd715e7356f8ccfec32665d353774");
