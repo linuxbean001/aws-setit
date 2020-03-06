@@ -1,8 +1,8 @@
 module.exports = {
-    USER: 'admin@setitandleaveit.com', 
-    PASS: 'jtM$2%Gi#52E',
+    USER: 'xxxxxxxxxxx', 
+    PASS: 'xxxxxxxxx',
     USERFROM: 'info@setitandleaveit.com',
-    SENDGRID_API_KEY:'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',
-    domain:'http://ec2-18-221-255-18.us-east-2.compute.amazonaws.com' 
+    SENDGRID_API_KEY:'xxxxxxxxxxxxx',
+    domain:'http://ec2-3-21-56-91.us-east-2.compute.amazonaws.com' 
     //domain:'http://localhost:3000' 
 }
